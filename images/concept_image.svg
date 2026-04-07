@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 441">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-family: Montserrat-Regular, Montserrat;
+        font-size: 24px;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <text class="cls-3" transform="translate(52.46 137.77)"><tspan x="0" y="0">G</tspan><tspan class="cls-6" x="18.55" y="0">r</tspan><tspan x="27.96" y="0">atitude</tspan></text>
+  <text class="cls-3" transform="translate(294.87 137.77)"><tspan x="0" y="0">Si</tspan><tspan class="cls-2" x="21.22" y="0">n</tspan><tspan class="cls-6" x="37.51" y="0">c</tspan><tspan x="50.81" y="0">e</tspan><tspan class="cls-7" x="65.3" y="0">r</tspan><tspan x="74.74" y="0">i</tspan><tspan class="cls-5" x="81.19" y="0">t</tspan><tspan x="90.7" y="0">y</tspan></text>
+  <text class="cls-3" transform="translate(91.12 334.52)"><tspan class="cls-4" x="0" y="0">C</tspan><tspan x="16.7" y="0">ommunication</tspan></text>
+  <ellipse class="cls-1" cx="130.95" cy="135.12" rx="144" ry="120" transform="translate(-56.73 148.58) rotate(-50)"/>
+  <ellipse class="cls-1" cx="326.05" cy="135.12" rx="144" ry="120" transform="translate(12.96 298.03) rotate(-50)"/>
+  <ellipse class="cls-1" cx="195.93" cy="305.88" rx="144" ry="120" transform="translate(-164.33 259.36) rotate(-50)"/>
+</svg>

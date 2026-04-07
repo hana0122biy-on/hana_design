@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+body {
+    background: #FAF9F8;
+}
+
+header {
+    position: relative;
+}
+
+.header01 img {
+    width: 100%;
+}
+
+
+.header_wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 80px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 img {
+    max-width: 427px;
+    justify-content: center;
+    position: absolute;
+    top: 404px;
+}
+
+.pc_nav ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+}
+
+.pc_nav ul li {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: italic;
+}
+
+.concept2 {
+    position: relative;
+}
+
+.concept2 img {
+    width: 100%;
+}
+
+.policy img {
+    width: 240px;
+}
