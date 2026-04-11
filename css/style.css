@@ -212,7 +212,6 @@ h2 {
 .ex_slider {
     animation: scroll-left 40s infinite linear .5s both;
     display: flex;
-    /* スライド3枚を横並び */
 }
 
 .ex_slide {
@@ -253,8 +252,6 @@ h2 {
         transform: translateX(-100%);
     }
 }
-
-/* ３枚のスライドが全部消えて再開ではなく、ずっと間を空けず続くようにしたい */
 
 .bg_wrap3 {
     background-image: url(../images/pc_footer_top.jpg);
