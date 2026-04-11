@@ -11,6 +11,23 @@ body {
     background-size: cover;
 }
 
+.bg_rgba1 .concept1 {
+    position: relative;
+}
+
+.bg_rgba1::before {
+    background: rgba(49, 16, 51, 0.3);
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 65%);
+}
+
+/* 半透過背景の位置調整ができない。ちょっとconcept2とかぶってる */
+
 .header01 {
     height: 100vh;
     position: relative;
@@ -97,8 +114,21 @@ h1 {
     background-size: cover;
 }
 
-.concept2 {
+.bg_rgba2 .concept2 {
+    position: relative;
+}
+
+.bg_rgba2::before {
+    background: rgba(49, 16, 51, 0.3);
+    content: '';
     width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.concept2 {
+    max-width: 1280px;
     height: 100vh;
     margin-left: 215px;
 }
@@ -139,27 +169,52 @@ h2 {
     align-items: center;
 }
 
+.introduction div {
+    text-align: right;
+}
+
 .introduction img {
     margin-left: 64px;
 }
 
+/* introductionの要素右揃えしたい */
+
+
+
 .ex_slider_wrap {
     display: flex;
     overflow: hidden;
-    /* はみ出たスライドを隠す */
 }
+
+.experience {
+    position: relative;
+    margin-top: 172px;
+}
+
+/* スライダーの上にex_boxを置きたい */
+
 
 .experience {
     margin-bottom: 254px;
 }
 
+.ex_box {
+    background: #FAF9F8;
+    content: '';
+    width: 504px;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .ex_slider {
-    animation: scroll-left 20s infinite linear .5s both;
+    animation: scroll-left 40s infinite linear .5s both;
     display: flex;
     /* スライド3枚を横並び */
 }
 
-/* スライド */
 .ex_slide {
     width: calc(100vw / 3);
     /* 3はスライドの枚数 */
@@ -174,7 +229,7 @@ h2 {
     font-style: italic;
     font-size: 24px;
     line-height: 1;
-    color: #A1679E;
+    color: #A65871;
     margin-top: 16px;
 }
 
@@ -199,7 +254,7 @@ h2 {
     }
 }
 
-/* ！！３枚のスライドが全部消えて再開ではなく、ずっと間を空けず続くようにしたい */
+/* ３枚のスライドが全部消えて再開ではなく、ずっと間を空けず続くようにしたい */
 
 .bg_wrap3 {
     background-image: url(../images/pc_footer_top.jpg);
@@ -212,7 +267,6 @@ h2 {
     position: relative;
     width: 100%;
     max-width: 1440px;
-    height: 100vh;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -222,42 +276,40 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* 画面中央に配置 */
     width: 1000px;
 }
 
-/* 共通のスタイル */
-.works-item {
-    position: absolute;
-    z-index: 2;
-    transition: transform 0.5s ease;
+/* 右が切れている */
+
+.works_item {
+    margin-bottom: 152px;
 }
 
-/* 各アイテムを個別にバラバラに配置（Figmaを見ながら数値を調整） */
-.item-01 {
-    top: 10%;
-    left: 5%;
+.item_01 {
+    margin-top: 80px;
+    margin-left: 160px;
     width: 480px;
+
 }
 
-.item-02 {
-    top: 40%;
-    right: 10%;
-    width: 250px;
+.item_02 {
+    text-align: right;
+    margin-top: -400px;
 }
 
-.item-03 {
-    bottom: 10%;
-    left: 20%;
-    width: 350px;
-    z-index: 3;
-    /* 重なり順を変えて前後感を出す */
+.item_03 {
+    text-align: right;
+    margin-top: -300px;
+    margin-right: 80px;
 }
 
+.item_04 {
+    margin-top: -40px;
+}
 
 .contact_group {
-    width: 100%;
-    margin: 0 80px;
+    max-width: 1280px;
+    margin: 215px 0 120px 80px;
 }
 
 .contact_title {
@@ -265,6 +317,12 @@ h2 {
     text-align: left;
     margin-bottom: 24px;
 }
+
+.contact_container {
+    text-align: left;
+}
+
+/* お問い合わせボタンが左寄せにならない */
 
 .contact_group p {
     color: #fff;
@@ -278,14 +336,12 @@ h2 {
 }
 
 footer>div {
-    max-width: 100%;
     margin-left: 80px;
 }
 
 .footer_group>div {
     display: flex;
     justify-content: space-between;
-    margin-top: 128px;
     align-items: center;
 }
 
@@ -298,4 +354,145 @@ footer>div {
     color: #fff;
     font-size: 12px;
     margin-left: 80px;
+    padding-bottom: 24px;
+}
+
+/* View Moreボタン グレー文字 */
+.button_more01 a {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    border: solid 1px #474747;
+    border-radius: 999px;
+    display: block;
+    box-sizing: border-box;
+    max-width: 176px;
+    text-align: center;
+    padding: 24px 40px 24px 24px;
+    margin-top: 24px;
+    margin-inline: auto;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.button_more01 a:hover {
+    color: #fff;
+    background: #A65871;
+    transition: all 0.3s;
+}
+
+.button_more01 a::before {
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+    bottom: 0;
+    content: "";
+    height: 10px;
+    margin: auto;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    transform: rotate(45deg);
+    transition: right .5s;
+    width: 10px;
+}
+
+.button_more01 a:hover::before {
+    right: 35px;
+}
+
+/* View Moreボタン 白文字 */
+.button_more02 a {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    color: #fff;
+    border: solid 1px #fff;
+    border-radius: 999px;
+    display: block;
+    box-sizing: border-box;
+    max-width: 176px;
+    text-align: center;
+    padding: 24px 40px 24px 24px;
+    margin-top: 24px;
+    margin-inline: auto;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.button_more02 a:hover {
+    color: #A65871ff;
+    background: #fff;
+    transition: all 0.3s;
+}
+
+.button_more02 a::before {
+    border-right: 1px solid #A65871ff;
+    border-top: 1px solid #A65871ff;
+    bottom: 0;
+    content: "";
+    height: 10px;
+    margin: auto;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    transform: rotate(45deg);
+    transition: right .5s;
+    width: 10px;
+}
+
+.button_more02 a:hover::before {
+    right: 35px;
+}
+
+
+/* お問い合わせボタン */
+.button_contact a {
+    font-size: 24px;
+    color: #fff;
+    border: solid 1px #fff;
+    border-radius: 999px;
+    display: block;
+    box-sizing: border-box;
+    max-width: 240px;
+    text-align: center;
+    padding: 24px 40px 24px 24px;
+    margin-top: 24px;
+    margin-inline: auto;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.button_contact a:hover {
+    color: #A65871;
+    background: #fff;
+    transition: all 0.3s;
+}
+
+.button_contact a::before {
+    border-right: 1px solid #A65871;
+    border-top: 1px solid #A65871;
+    bottom: 0;
+    content: "";
+    height: 10px;
+    margin: auto;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    transform: rotate(45deg);
+    transition: right .5s;
+    width: 10px;
+}
+
+.button_contact a:hover::before {
+    right: 35px;
 }

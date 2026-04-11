@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="bg_wrap1">
+    <div class="bg_wrap1 bg_rgba1">
         <div class="header01">
             <h1>
                 <img src="./images/hana_design_logo.svg" alt="hana design">
@@ -49,7 +49,7 @@
         </section>
     </div>
 
-    <div class="bg_wrap2">
+    <div class="bg_wrap2 bg_rgba2">
         <section class="concept2">
             <picture>
                 <img src="./images/concept_image.svg" alt="concept">
@@ -68,21 +68,49 @@
         <h2>ABOUT</h2>
         <p class="subtitle">わたしのこと</p>
         <div class="introduction">
-            <p>ご覧いただきありがとうございます!<br>
-                hana designの Hanakoと申します。
-            </p>
-
-            <!-- View Moreボタン追加 -->
-
+            <div>
+                <p>ご覧いただきありがとうございます!<br>
+                    hana designの Hanakoと申します。
+                </p>
+                <div class="button_more01">
+                    <a href="#">View More</a>
+                </div>
+            </div>
             <img src="./images/pc_about_01.jpg" alt="hanako_photo">
         </div>
     </section>
 
 
     <section class="experience">
-        <h2>EXPERIENCE</h2>
-        <p class="subtitle">経験してきたこと</p>
+        <div class="ex_box">
+            <h2>EXPERIENCE</h2>
+            <p class="subtitle">経験してきたこと</p>
+            <div class="button_more01">
+                <a href="#">View More</a>
+            </div>
+        </div>
+
         <div class="ex_slider_wrap">
+            <ul class="ex_slider">
+                <li class="ex_slide">
+                    <img src="./images/pc_experience_01.png" alt="手書きPOP">
+                    <p class="ex_number">01</p>
+                    <p class="ex_title">雑貨屋のPOPから始まった<br>
+                        「売る」ための制作</p>
+                </li>
+                <li class="ex_slide">
+                    <img src="./images/pc_experience_02.png" alt="ミーティング風景">
+                    <p class="ex_number">02</p>
+                    <p class="ex_title">営業職で培った管理能力と<br>
+                        コミュニケーション力</p>
+                </li>
+                <li class="ex_slide">
+                    <img src="./images/pc_experience_03.png" alt="">
+                    <p class="ex_number">03</p>
+                    <p class="ex_title">ライフステージに合わせ<br>
+                        Webデザインの道へ</p>
+                </li>
+            </ul>
             <ul class="ex_slider">
                 <li class="ex_slide">
                     <img src="./images/pc_experience_01.png" alt="手書きPOP">
@@ -111,22 +139,23 @@
             <h2 class="works_title">
                 <img src="./images/works_title.svg" alt="実績">
             </h2>
-
-            <div class="works_item item_01">
-                <img src="./images/works_01.jpg" alt="実績01">
+            <div class="works_item">
+                <div class="item_01">
+                    <img src="./images/works_01.jpg" alt="実績01">
+                </div>
+                <div class="item_02">
+                    <img src="./images/works_02.jpg" alt="実績02">
+                </div>
+                <div class="item_04">
+                    <img src="./images/works_04.jpg" alt="実績04">
+                </div>
+                <div class="item_03">
+                    <img src="./images/works_03.jpg" alt="実績03">
+                </div>
             </div>
-            <div class="works_item item_02">
-                <img src="./images/works_02.jpg" alt="実績02">
+            <div class="button_more02">
+                <a href="#">View More</a>
             </div>
-            <div class="works_item item_03">
-                <img src="./images/works_03.jpg" alt="実績03">
-            </div>
-            <div class="works_item item_04">
-                <img src="./images/works_04.jpg" alt="実績04">
-            </div>
-
-            <!-- View Moreボタン追加 -->
-
         </div>
 
         <footer>
@@ -134,7 +163,9 @@
                 <div class="contact_container">
                     <h2 class="contact_title">CONTACT</h2>
                     <p>お問い合わせは下記フォームまたはInstagramのDMよりお願いいたします。</p>
-                    <!-- お問い合わせボタン、インスタアイコン追加 -->
+                    <div class="button_contact">
+                        <a href="#">お問い合わせ</a>
+                    </div>
                 </div>
             </div>
 
