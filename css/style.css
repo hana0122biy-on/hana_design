@@ -15,7 +15,7 @@ body {
     position: relative;
 }
 
-.bg_rgba1::before {
+.concept1::before {
     background: rgba(49, 16, 51, 0.3);
     content: '';
     width: 100%;
@@ -23,7 +23,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translate(0, 65%);
+    z-index: 1;
 }
 
 /* 半透過背景の位置調整ができない。ちょっとconcept2とかぶってる */
@@ -79,13 +79,15 @@ h1 {
 
 .concept1 img {
     width: 224px;
-    margin-right: 215px;
 }
 
-.concept1 {
+.concept1>div {
     display: flex;
     justify-content: space-between;
-    margin-left: 215px;
+    max-width: 1000px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
 }
 
 .concept_text1 {
@@ -114,7 +116,7 @@ h1 {
     background-size: cover;
 }
 
-.bg_rgba2 .concept2 {
+.bg_rgba2 {
     position: relative;
 }
 
@@ -128,13 +130,21 @@ h1 {
 }
 
 .concept2 {
-    max-width: 1280px;
     height: 100vh;
-    margin-left: 215px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
 }
 
-.concept2 img {
-    width: 40%;
+.concept2 div {
+    margin-bottom: 172px;
+}
+
+.concept2 div img {
+    width: 100%;
     margin: 80px 0;
 }
 
@@ -177,9 +187,6 @@ h2 {
     margin-left: 64px;
 }
 
-/* introductionの要素右揃えしたい */
-
-
 
 .ex_slider_wrap {
     display: flex;
@@ -207,6 +214,11 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.ex_box .button_more01 a {
+    margin-inline: auto;
 }
 
 .ex_slider {
@@ -319,8 +331,6 @@ h2 {
     text-align: left;
 }
 
-/* お問い合わせボタンが左寄せにならない */
-
 .contact_group p {
     color: #fff;
 }
@@ -369,7 +379,7 @@ footer>div {
     text-align: center;
     padding: 24px 40px 24px 24px;
     margin-top: 24px;
-    margin-inline: auto;
+    margin-left: auto;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s;
@@ -462,7 +472,6 @@ footer>div {
     text-align: center;
     padding: 24px 40px 24px 24px;
     margin-top: 24px;
-    margin-inline: auto;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s;

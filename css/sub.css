@@ -1,0 +1,318 @@
+@charset "utf-8";
+
+body {
+    background: #FAF9F8;
+}
+
+.header_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5% 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pc_nav ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+}
+
+.pc_nav ul li {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.sub_header svg {
+    width: 184px;
+}
+
+.sub_header svg path {
+    fill: #A65871;
+}
+
+h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 64px;
+    line-height: 1;
+    text-align: center;
+    margin-top: 172px;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+
+.pc_about {
+    margin-bottom: 32px;
+}
+
+.introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.introduction div {
+    text-align: right;
+}
+
+.introduction img {
+    margin-left: 64px;
+}
+
+.history {
+    max-width: 1000px;
+    margin-left: 220px;
+    margin-top: 160px;
+}
+
+.history_title {
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+
+.history_box {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    /* padding-left: 20px; */
+}
+
+.history_item {
+    display: grid;
+    grid-template-columns: 24px 280px 1fr;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 54px;
+    position: relative;
+    z-index: 2;
+}
+
+.capsule_icon {
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 縦線 */
+.history_item::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    /* 丸の中央に合わせる */
+    top: 20px;
+    width: 1px;
+    height: 100%;
+    background-color: #474747;
+    z-index: 5;
+}
+
+/* 最後のアイテムだけ線を表示しない */
+.history_item:last-child::after {
+    display: none;
+}
+
+.job_title .job_scope {
+    text-align: left;
+    margin: 0;
+}
+
+.circle_btn {
+    border: 1px solid#474747;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 160px;
+    color: #474747;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+
+
+.concept_container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 294px;
+}
+
+.concept_image {
+    width: 220px;
+    flex-shrink: 0;
+    margin-right: 150px;
+
+}
+
+.concept_image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.concept_content {
+    padding-right: 5%;
+}
+
+.concept_content>h2 {
+    margin: 0 auto;
+}
+
+
+.concept_content>p {
+    margin-bottom: 172px;
+}
+
+.main_copy {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 40px;
+    color: #A65871;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.sub_copy {
+    font-size: 24px;
+    margin-bottom: 128px;
+}
+
+.copy_text {
+    line-height: 3;
+}
+
+.bg_wrap4 {
+    background-image: url(../images/pc_footer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contact_group {
+    max-width: 1280px;
+    margin: 215px 0 120px 80px;
+}
+
+.contact_title {
+    color: #fff;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.contact_container {
+    text-align: left;
+}
+
+.contact_container>h2 {
+    padding-top: 120px;
+}
+
+.contact_group p {
+    color: #fff;
+}
+
+.footer_group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.footer_group>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_group img {
+    width: 240px;
+    margin-right: 80px;
+}
+
+.copyright {
+    color: #fff;
+    font-size: 12px;
+    margin-left: 80px;
+    padding-bottom: 24px;
+}
+
+/* お問い合わせボタン */
+.button_contact a {
+    font-size: 24px;
+    color: #fff;
+    border: solid 1px #fff;
+    border-radius: 999px;
+    display: block;
+    box-sizing: border-box;
+    max-width: 240px;
+    text-align: center;
+    padding: 24px 40px 24px 24px;
+    margin-top: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.button_contact a:hover {
+    color: #A65871;
+    background: #fff;
+    transition: all 0.3s;
+}
+
+.button_contact a::before {
+    border-right: 1px solid #A65871;
+    border-top: 1px solid #A65871;
+    bottom: 0;
+    content: "";
+    height: 10px;
+    margin: auto;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    transform: rotate(45deg);
+    transition: right .5s;
+    width: 10px;
+}
+
+.button_contact a:hover::before {
+    right: 35px;
+}
+
+.pc_nav ul li,
+.concept1 p,
+.concept2 p {
+    color: #fff;
+}
+
+.pc_nav ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+    margin-left: 80px;
+}
+
+.pc_nav ul li {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: italic;
+}
