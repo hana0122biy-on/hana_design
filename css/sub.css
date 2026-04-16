@@ -40,12 +40,12 @@ body {
 h2 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 200;
     font-style: italic;
     font-size: 64px;
     line-height: 1;
     text-align: center;
-    margin-top: 172px;
+    margin-top: 240px;
 }
 
 .subtitle {
@@ -74,7 +74,7 @@ h2 {
 
 .history {
     max-width: 1000px;
-    margin-left: 220px;
+    margin: auto;
     margin-top: 160px;
 }
 
@@ -84,17 +84,15 @@ h2 {
 }
 
 .history_box {
-    max-width: 1000px;
-    margin: 0 auto;
+    /* max-width: 1000px; */
     position: relative;
-    /* padding-left: 20px; */
 }
 
 .history_item {
     display: grid;
     grid-template-columns: 24px 280px 1fr;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;
     padding-bottom: 54px;
     position: relative;
     z-index: 2;
@@ -104,8 +102,9 @@ h2 {
     width: 16px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding-top: 9px;
 }
+
 
 /* 縦線 */
 .history_item::after {
@@ -113,9 +112,9 @@ h2 {
     position: absolute;
     left: 6px;
     /* 丸の中央に合わせる */
-    top: 20px;
+    top: 29px;
     width: 1px;
-    height: 100%;
+    height: 70%;
     background-color: #474747;
     z-index: 5;
 }
@@ -142,7 +141,8 @@ h2 {
     text-decoration: none;
     text-align: center;
     line-height: 1.5;
-    margin: 10px 0;
+    margin: 0 auto;
+    margin-top: 160px;
 }
 
 
@@ -193,11 +193,16 @@ h2 {
 
 .sub_copy {
     font-size: 24px;
-    margin-bottom: 128px;
+    margin-bottom: 96px;
 }
 
-.copy_text {
+.copy_discription {
     line-height: 3;
+}
+
+.pink-text {
+    color: #A65871;
+    font-weight: 500;
 }
 
 .bg_wrap4 {
@@ -229,6 +234,7 @@ h2 {
     color: #fff;
 }
 
+/* フッター共通 */
 .footer_group {
     display: flex;
     justify-content: space-between;
@@ -240,11 +246,16 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 80px;
 }
 
 .footer_group img {
     width: 240px;
     margin-right: 80px;
+}
+
+.footer_group nav ul li {
+    color: #fff;
 }
 
 .copyright {
@@ -297,22 +308,257 @@ h2 {
     right: 35px;
 }
 
-.pc_nav ul li,
-.concept1 p,
-.concept2 p {
-    color: #fff;
-}
 
-.pc_nav ul {
+/* EXPERIENCEページ */
+.ex_slider {
     display: flex;
     justify-content: space-between;
-    gap: 64px;
-    margin-left: 80px;
+    flex-wrap: wrap;
+    padding: 0 10px;
 }
 
-.pc_nav ul li {
+.ex_slide {
+    text-align: center;
+}
+
+.ex_number {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 600;
     font-style: italic;
+    font-size: 24px;
+    line-height: 1;
+    color: #A65871;
+    margin-top: 16px;
+}
+
+.ex_title {
+    font-size: 24px;
+    margin: 16px 0;
+}
+
+.ex_slide img {
+    display: block;
+    width: 100%;
+    align-items: center;
+}
+
+.ex_discription {
+    width: 346px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.skill-container {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 112px;
+    padding: 0 10px;
+    /* カード同士の間隔 */
+
+}
+
+.skill-card {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    width: 320px;
+    min-height: 240px;
+    padding: 60px 30px 40px;
+    /* アイコンが重なる分、上を広めに */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    /* ほんのり影をつけて浮かせる */
+    box-sizing: border-box;
+}
+
+/* カプセルアイコンの配置 */
+.skill-icon {
+    position: absolute;
+    top: -30px;
+    /* カードの上から半分はみ出させる */
+    left: -50px;
+    /* カードの左から少しはみ出させる */
+    width: 120px;
+    /* カプセルのサイズに合わせて調整 */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* カプセル背景画像 */
+.skill-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 画像の上のテキスト */
+.skill-category {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* テキストの装飾 */
+    color: #fff;
+    white-space: nowrap;
+    /* 文字が改行されないように */
+}
+
+.skill-icon img {
+    width: 80px;
+    height: auto;
+}
+
+/* リストの装飾 */
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    line-height: 2;
+    text-align: left;
+}
+
+/* ツール名など、サブ項目は少し字下げする */
+.sub-item {
+    padding-left: 1em;
+}
+
+
+/* WORKSページ */
+/* カテゴリーボタン */
+.btn_works a {
+    font-size: 16px;
+    color: #A65871;
+    border: solid 1px #A65871;
+    border-radius: 999px;
+    display: block;
+    box-sizing: border-box;
+    max-width: 160px;
+    text-align: center;
+    padding: 8px;
+    margin-top: 24px;
+    margin-left: auto;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.btn_works a:hover {
+    color: #fff;
+    background: #A65871;
+    transition: all 0.3s;
+}
+
+.btn_works a:hover::before {
+    right: 35px;
+}
+
+.works_filter {
+    display: grid;
+    /* PC版：3列（同じ幅で3等分） */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 16px;
+    /* ボタン同士の縦横の間隔 */
+    max-width: 560px;
+    /* ボタン全体の横幅を抑えると綺麗に見えます */
+    margin: 0 auto;
+    /* 中央寄せ */
+}
+
+@media (max-width: 768px) {
+    .filter-group {
+        /* スマホ版：2列（同じ幅で2等分） */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        /* スマホでは少し間隔を詰める */
+        padding: 0 20px;
+        /* 画面端にピッタリくっつかないよう余白 */
+    }
+}
+
+
+
+.work-card {
+    border: 1px solid #A7A3A4;
+    width: 100%;
+    max-width: 400px;
+    /* カードの最大幅 */
+    border: 1px solid #A7A3A4;
+    /* 外枠 */
+    background: #FAF9F8;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. タイトル部分 */
+.work-card-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccc;
+    /* 下の区切り線 */
+}
+
+.work-title {
+    font-size: 18px;
+    font-weight: normal;
+    color: #333;
+    margin: 0;
+}
+
+/* 2. 画像部分 */
+.work-card-image {
+    padding: 16px 24px;
+    /* 画像の周りに少し余白を置くのがhana design流 */
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 3. フッター部分 */
+.work-card-footer {
+    border-top: 1px solid #ccc;
+    /* 上の区切り線 */
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    /* 左側に説明、右側にタグ */
+    min-height: 80px;
+}
+
+/* 説明エリア */
+.work-description {
+    padding: 15px 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    border-right: 1px solid #ccc;
+    /* 縦の区切り線 */
+}
+
+/* カテゴリー・タグエリア */
+.work-meta {
+    display: flex;
+    flex-direction: column;
+    /* 縦に並べる（LPと課題） */
+    justify-content: flex-end;
+    /* 下に寄せる */
+    align-items: flex-end;
+    /* 右に寄せる */
+    padding: 15px;
+    font-size: 12px;
+    color: #999;
 }
