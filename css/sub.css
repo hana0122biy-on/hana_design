@@ -502,22 +502,17 @@ h2 {
 /* 1. タイトル部分 */
 .work-card-header {
     padding: 15px 20px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #A7A3A4;
     /* 下の区切り線 */
 }
 
 .work-title {
-    font-size: 18px;
-    font-weight: normal;
-    color: #333;
+    font-size: 24px;
     margin: 0;
 }
 
 /* 2. 画像部分 */
 .work-card-image {
-    padding: 16px 24px;
-    /* 画像の周りに少し余白を置くのがhana design流 */
-    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -531,7 +526,7 @@ h2 {
 
 /* 3. フッター部分 */
 .work-card-footer {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #A7A3A4;
     /* 上の区切り線 */
     display: grid;
     grid-template-columns: 1fr 100px;
@@ -541,12 +536,8 @@ h2 {
 
 /* 説明エリア */
 .work-description {
-    padding: 15px 20px;
-    font-size: 14px;
+    padding: 16px 24px;
     line-height: 1.6;
-    color: #666;
-    border-right: 1px solid #ccc;
-    /* 縦の区切り線 */
 }
 
 /* カテゴリー・タグエリア */
@@ -560,5 +551,5 @@ h2 {
     /* 右に寄せる */
     padding: 15px;
     font-size: 12px;
-    color: #999;
+    color: #ABABAB;
 }
