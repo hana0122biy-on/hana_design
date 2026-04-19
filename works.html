@@ -12,8 +12,16 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/sub.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 </head>
 
@@ -75,56 +83,230 @@
         </div>
     </div>
 
-    <h2>WORKS</h2>
-    <p class="subtitle">作ったもの</p>
+    <section>
+        <h2>WORKS</h2>
+        <p class="subtitle">作ったもの</p>
+        <div class="works_filter">
+            <a class="btn_works" href="#">Webサイト</a>
+            <a class="btn_works" href="#">Webバナー</a>
+            <a class="btn_works" href="#">LP</a>
+            <a class="btn_works" href="#">印刷物</a>
+            <a class="btn_works" href="#">ロゴ</a>
+            <a class="btn_works" href="#">その他</a>
+        </div>
 
-    <section class="works_filter">
-        <div class="btn_works">
-            <a href="#">Webサイト</a>
-        </div>
-        <div class="btn_works">
-            <a href="#">Webバナー</a>
-        </div>
-        <div class="btn_works">
-            <a href="#">LP</a>
-        </div>
-        <div class="btn_works">
-            <a href="#">印刷物</a>
-        </div>
-        <div class="btn_works">
-            <a href="#">ロゴ</a>
-        </div>
-        <div class="btn_works">
-            <a href="#">その他</a>
+        <div class="works-grid">
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">ポートフォリオサイト</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_hanadesign.jpg" alt="ポートフォリオサイト 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>ポートフォリオ</p>
+                        <p>「hana design」</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">Webサイト | 自主制作</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">ロゴデザイン</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_hanadesign_logo.jpg" alt="hana design ロゴ画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>ポートフォリオサイト</p>
+                        <p>「hana design」</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">ロゴ | 自主制作</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">店舗サイト</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_lifehairsalon.jpg" alt="LIFE hair salon 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>ヘアサロン</p>
+                        <p>「LIFE hair salon」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">LP | 課題</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">SNS広告用バナー</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_burger.jpg" alt="hana burger広告バナー 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>ファストフード店</p>
+                        <p>「hana burger」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">Webバナー | 課題</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">SNS広告用バナー</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_ice.jpg" alt="hana ice広告バナー 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>アイスクリーム専門店</p>
+                        <p>「hana ice」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">Webバナー | 課題</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">店舗サイト</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_designcafe.jpg" alt="DESIGN CAFE 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>カフェ</p>
+                        <p>「DESIGN CAFE」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">LP | 課題</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">ロゴデザイン</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_luce.jpg" alt="luce ロゴ画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>キッチンカー</p>
+                        <p>「Luce」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">ロゴ | クライアントワーク</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">名刺サイズ</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_takasawa.jpg" alt="髙澤品質管理研究所 名刺 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>コンサルティング会社</p>
+                        <p>「髙澤品質管理研究所」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">名刺 | クライアントワーク</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">店舗/予約サイト</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_workers.jpg" alt="WORKERS 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>コワーキングスペース</p>
+                        <p>「WORKERS」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">LP | 課題</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="work-card">
+                <div class="work-card-header">
+                    <h3 class="work-title">SNS広告用バナー</h3>
+                </div>
+                <div class="work-card-image">
+                    <img src="images/works_mobile.jpg" alt="デザスタmobile広告バナー 実績画像">
+                </div>
+                <div class="work-card-footer">
+                    <div class="work-description">
+                        <p>スマートフォンキャリア</p>
+                        <p>「デザスタmobile」様</p>
+                    </div>
+                    <div class="work-meta">
+                        <span class="work-category">Webバナー | 課題</span>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
 
-    <section class="works-grid">
-        <article class="work-card">
-            <div class="work-card-header">
-                <h3 class="work-title">美容院 店舗サイト</h3>
-            </div>
-
-            <div class="work-card-image">
-                <img src="images/works_lifehairsalon.jpg" alt="美容院 店舗サイト 実績画像">
-            </div>
-
-            <div class="work-card-footer">
-                <div class="work-description">
-                    <p>ヘアサロン</p>
-                    <p>「LIFE hair salon」様</p>
-                </div>
-                <div class="work-meta">
-                    <span class="work-category">LP | 課題</span>
-
+    <footer>
+        <div class="bg_wrap4">
+            <div class="contact_group">
+                <div class="contact_container">
+                    <h2 class="contact_title">CONTACT</h2>
+                    <p>お問い合わせは下記フォームまたはInstagramのDMよりお願いいたします。</p>
+                    <div class="button_contact">
+                        <a href="#">お問い合わせ</a>
+                    </div>
                 </div>
             </div>
-        </article>
+
+            <div class="footer_group">
+                <div>
+                    <nav class="pc_nav">
+                        <ul>
+                            <li><a href="#concept">CONCEPT</a></li>
+                            <li><a href="#about">ABOUT</a></li>
+                            <li><a href="#experience">EXPERIENCE</a></li>
+                            <li><a href="#works">WORKS</a></li>
+                            <li><a href="#contact">CONTACT</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <img src="./images/hana_design_logo.svg" alt="hana design">
+            </div>
+            <p class="copyright">©2026 hana design</p>
         </div>
-
-
-
-    </section>
+    </footer>
 
 </body>
 
