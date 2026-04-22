@@ -62,6 +62,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 10px;
 }
 
 .introduction div {
@@ -76,6 +77,7 @@ h2 {
     max-width: 1000px;
     margin: auto;
     margin-top: 160px;
+    padding: 0 10px;
 }
 
 .history_title {
@@ -150,15 +152,15 @@ h2 {
 .concept_container {
     display: flex;
     align-items: center;
-    width: 100%;
     margin-top: 294px;
 }
 
 .concept_image {
-    width: 220px;
+    width: 15%;
+    height: 100%;
+    object-fit: cover;
     flex-shrink: 0;
-    margin-right: 150px;
-
+    margin-right: 10%;
 }
 
 .concept_image img {
@@ -250,8 +252,9 @@ h2 {
 }
 
 .footer_group img {
-    width: 240px;
+    width: 16%;
     margin-right: 80px;
+    padding-left: 10px;
 }
 
 .footer_group nav ul li {
@@ -349,21 +352,22 @@ h2 {
     align-items: center;
 }
 
-.ex_discription {
+.ex_description {
     text-align: left;
     margin: 0 auto;
 }
+
+
 
 .skill-container {
     display: flex;
     max-width: 1280px;
     margin: 0 auto;
     justify-content: center;
-    gap: 112px;
+    gap: 8%;
     padding: 0 10px;
-    /* カード同士の間隔 */
-
 }
+
 
 .skill-card {
     position: relative;
