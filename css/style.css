@@ -56,6 +56,12 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+@media screen and (max-width:767px) {
+    h1 {
+        width: 200px;
+    }
+}
+
 .pc_nav ul li,
 .concept1 p,
 .concept2 p {
@@ -65,8 +71,12 @@ h1 {
 .pc_nav ul {
     display: flex;
     justify-content: space-between;
+}
+
+.header_wrap>nav ul {
     gap: 64px;
 }
+
 
 .pc_nav ul li {
     font-family: "Montserrat", sans-serif;
@@ -112,6 +122,34 @@ h1 {
     line-height: 3;
     margin-bottom: 327px;
 }
+
+
+@media screen and (max-width:767px) {
+    .concept1>div {
+        margin: 0 30px;
+    }
+
+
+    .concept_text1 {
+        font-size: 24px;
+        margin-top: 96px;
+    }
+
+    .concept_text2 {
+        font-size: 16px;
+        margin-bottom: 48px;
+    }
+
+    .concept_text3 {
+        font-size: 12px;
+        margin-bottom: 96px;
+    }
+
+    .concept1 img {
+        display: none
+    }
+}
+
 
 /* スクロースアニメーション */
 /* アイコン全体の基本設定（固定位置） */
@@ -253,7 +291,6 @@ h1 {
 }
 
 .concept2 {
-    height: 100vh;
     display: flex;
     justify-content: space-between;
     max-width: 1000px;
@@ -273,6 +310,21 @@ h1 {
     margin-bottom: 160px;
 }
 
+@media screen and (max-width:767px) {
+    .concept2>div {
+        margin: 0 30px;
+    }
+
+    .concept2 div img {
+        margin-top: 96px;
+    }
+
+    .concept_text4 {
+        font-size: 14px;
+        margin-bottom: 96px;
+    }
+}
+
 h2 {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -287,6 +339,17 @@ h2 {
 .subtitle {
     text-align: center;
     margin-bottom: 32px;
+}
+
+@media screen and (max-width:767px) {
+    h2 {
+        font-size: 32px;
+        margin-top: 96px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
 }
 
 
@@ -308,6 +371,23 @@ h2 {
     margin-left: 64px;
 }
 
+@media screen and (max-width:767px) {
+    .pc_top_about {
+        margin: 0 30px;
+    }
+
+    .introduction {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: end;
+    }
+
+    .introduction img {
+        width: 55%;
+        margin-bottom: 32px;
+    }
+}
+
 
 .ex_slider_wrap {
     display: flex;
@@ -316,11 +396,7 @@ h2 {
 
 .experience {
     position: relative;
-    margin-top: 172px;
-}
-
-.experience {
-    margin-bottom: 254px;
+    margin: 172px 0 254px;
 }
 
 .ex_box {
@@ -333,6 +409,15 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+}
+
+.ex_box>h2 {
+    margin-top: 96px;
+}
+
+.ex_text {
+    margin: 48px auto;
+    text-align: center;
 }
 
 .ex_box .button_more01 a {
@@ -372,6 +457,43 @@ h2 {
     width: 100%;
 }
 
+@media screen and (max-width:767px) {
+    .experience {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 160px;
+    }
+
+    .ex_box {
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+    }
+
+    .ex_slider {
+        animation: none;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .ex_slider:nth-of-type(2) {
+        display: none;
+    }
+
+    .ex_slide {
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 32px;
+    }
+
+    .ex_slide>p {
+        font-size: 16px;
+    }
+}
+
+
+
 /* CSSアニメーション */
 @keyframes scroll-left {
     from {
@@ -405,6 +527,12 @@ h2 {
     padding: 0 10px;
 }
 
+@media screen and (max-width:767px) {
+    .works_title img {
+        width: 85%;
+    }
+}
+
 .works_item {
     margin-bottom: 152px;
 }
@@ -419,6 +547,7 @@ h2 {
 .group2 {
     display: flex;
     justify-content: space-between;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -458,6 +587,12 @@ h2 {
     color: #fff;
 }
 
+.button_contact {
+    display: flex;
+}
+
+
+/* フッター共通 */
 .footer_group {
     display: flex;
     justify-content: space-between;
@@ -473,6 +608,11 @@ footer>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 60%;
+}
+
+.footer_group>div>nav {
+    width: 100%;
 }
 
 .footer_group img {
@@ -487,6 +627,14 @@ footer>div {
     margin-left: 80px;
     padding-bottom: 24px;
 }
+
+
+@media screen and (max-width:767px) {
+    .works_title img {
+        width: 85%;
+    }
+}
+
 
 /* View Moreボタン グレー文字 */
 .button_more01 a {
@@ -535,94 +683,100 @@ footer>div {
     right: 35px;
 }
 
-/* View Moreボタン 白文字 */
-.button_more02 a {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 16px;
-    color: #fff;
-    border: solid 1px #fff;
-    border-radius: 999px;
-    display: block;
-    box-sizing: border-box;
-    max-width: 176px;
-    text-align: center;
-    padding: 24px 40px 24px 24px;
-    margin-top: 24px;
-    margin-inline: auto;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-}
-
-.button_more02 a:hover {
-    color: #A65871ff;
-    background: #fff;
-    transition: all 0.3s;
-}
-
-.button_more02 a::before {
-    border-right: 1px solid #A65871ff;
-    border-top: 1px solid #A65871ff;
-    bottom: 0;
-    content: "";
-    height: 10px;
-    margin: auto;
-    position: absolute;
-    right: 40px;
-    top: 0;
-    transform: rotate(45deg);
-    transition: right .5s;
-    width: 10px;
-}
-
-.button_more02 a:hover::before {
-    right: 35px;
-}
+@media screen and (max-width:767px) {
+    .button_more01 {
+        display: none;
+    }
 
 
-/* お問い合わせボタン */
-.button_contact a {
-    font-size: 24px;
-    color: #fff;
-    border: solid 1px #fff;
-    border-radius: 999px;
-    display: block;
-    box-sizing: border-box;
-    max-width: 240px;
-    text-align: center;
-    padding: 24px 40px 24px 24px;
-    margin-top: 24px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-}
+    /* View Moreボタン 白文字 */
+    .button_more02 a {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 16px;
+        color: #fff;
+        border: solid 1px #fff;
+        border-radius: 999px;
+        display: block;
+        box-sizing: border-box;
+        max-width: 176px;
+        text-align: center;
+        padding: 24px 40px 24px 24px;
+        margin-top: 24px;
+        margin-inline: auto;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+    }
 
-.button_contact a:hover {
-    color: #A65871;
-    background: #fff;
-    transition: all 0.3s;
-}
+    .button_more02 a:hover {
+        color: #A65871ff;
+        background: #fff;
+        transition: all 0.3s;
+    }
 
-.button_contact a::before {
-    border-right: 1px solid #A65871;
-    border-top: 1px solid #A65871;
-    bottom: 0;
-    content: "";
-    height: 10px;
-    margin: auto;
-    position: absolute;
-    right: 40px;
-    top: 0;
-    transform: rotate(45deg);
-    transition: right .5s;
-    width: 10px;
-}
+    .button_more02 a::before {
+        border-right: 1px solid #A65871ff;
+        border-top: 1px solid #A65871ff;
+        bottom: 0;
+        content: "";
+        height: 10px;
+        margin: auto;
+        position: absolute;
+        right: 40px;
+        top: 0;
+        transform: rotate(45deg);
+        transition: right .5s;
+        width: 10px;
+    }
 
-.button_contact a:hover::before {
-    right: 35px;
-}
+    .button_more02 a:hover::before {
+        right: 35px;
+    }
+
+
+    /* お問い合わせボタン */
+    .button_contact>a {
+        font-size: 24px;
+        color: #fff;
+        border: solid 1px #fff;
+        border-radius: 999px;
+        display: block;
+        box-sizing: border-box;
+        max-width: 240px;
+        text-align: center;
+        padding: 24px 40px 24px 24px;
+        margin-top: 24px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+    }
+
+    .button_contact>a:hover {
+        color: #A65871;
+        background: #fff;
+        transition: all 0.3s;
+    }
+
+    .button_contact>a::before {
+        border-right: 1px solid #A65871;
+        border-top: 1px solid #A65871;
+        bottom: 0;
+        content: "";
+        height: 10px;
+        margin: auto;
+        position: absolute;
+        right: 40px;
+        top: 0;
+        transform: rotate(45deg);
+        transition: right .5s;
+        width: 10px;
+    }
+
+    .button_contact>a:hover::before {
+        right: 35px;
+    }

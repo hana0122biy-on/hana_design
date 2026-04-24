@@ -16,9 +16,20 @@ body {
     box-sizing: border-box;
 }
 
+.header_wrap>div {
+    width: 60%;
+}
+
+.header_wrap>div>nav {
+    width: 100%;
+}
+
 .pc_nav ul {
     display: flex;
     justify-content: space-between;
+}
+
+.header_wrap>nav ul {
     gap: 64px;
 }
 
@@ -29,8 +40,9 @@ body {
     font-style: italic;
 }
 
-.sub_header svg {
-    width: 184px;
+
+.sub_header>div>h1 {
+    width: 16%;
 }
 
 .sub_header svg path {
@@ -53,6 +65,18 @@ h2 {
     margin-bottom: 64px;
 }
 
+@media screen and (max-width:767px) {
+    h2 {
+        font-size: 32px;
+        margin-top: 96px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-bottom: 40px;
+    }
+}
+
 
 .pc_about {
     margin-bottom: 32px;
@@ -73,6 +97,28 @@ h2 {
     margin-left: 64px;
 }
 
+@media screen and (max-width:767px) {
+    .pc_about {
+        margin-right: 30px;
+    }
+
+    .introduction {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: end;
+    }
+
+    .introduction>div>p {
+        font-size: 12px;
+    }
+
+    .introduction img {
+        width: 55%;
+        margin-bottom: 32px;
+    }
+}
+
+
 .history {
     max-width: 1000px;
     margin: auto;
@@ -86,7 +132,6 @@ h2 {
 }
 
 .history_box {
-    /* max-width: 1000px; */
     position: relative;
 }
 
@@ -147,17 +192,76 @@ h2 {
     margin-top: 160px;
 }
 
+@media screen and (max-width: 767px) {
+    .history {
+        margin-left: 30px;
+    }
+
+    /* 1. 各アイテムのグリッド構造をスマホ用に組み替える */
+    .history_item {
+        display: grid;
+        /* 左側にアイコン(24px)、右側にタイトルと説明文(1fr)の2列にする */
+        grid-template-columns: 24px 1fr;
+        /* タイトルと説明文が縦に並ぶように、行の構成を指定 */
+        grid-template-areas:
+            "icon title"
+            ".    scope";
+        gap: 10px 20px;
+        /* 上下10px、左右20pxの余白 */
+        align-items: center;
+        padding-bottom: 40px;
+        /* アイテム間の距離 */
+    }
+
+    /* 2. 各要素をグリッドのどこに配置するか指定する */
+    .capsule_icon {
+        grid-area: icon;
+        padding-top: 0;
+        /* 位置調整のパディングをリセット */
+    }
+
+    .job_title {
+        grid-area: title;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .job_scope {
+        grid-area: scope;
+        font-size: 12px;
+        text-align: left;
+        /* 左揃えを確実にする */
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* 3. アイテムを繋ぐ「縦線」の位置を微調整 */
+    .history_item::after {
+        left: 6px;
+        /* アイコン(24px)の中央に合わせる (24/2 - 1) */
+        top: 30px;
+        /* アイコンの下から線が始まるように調整 */
+        height: calc(100% - 30px);
+        /* 線の長さを調整 */
+    }
+
+    .circle_btn {
+        width: 120px;
+        height: 120px;
+        font-size: 12px;
+        margin-top: 64px;
+    }
+
+}
 
 
 .concept_container {
     display: flex;
-    align-items: center;
     margin-top: 294px;
 }
 
 .concept_image {
     width: 15%;
-    height: 100%;
     object-fit: cover;
     flex-shrink: 0;
     margin-right: 10%;
@@ -165,7 +269,8 @@ h2 {
 
 .concept_image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -177,6 +282,9 @@ h2 {
     margin: 0 auto;
 }
 
+.spbr {
+    display: none;
+}
 
 .concept_content>p {
     margin-bottom: 172px;
@@ -206,6 +314,30 @@ h2 {
     color: #A65871;
     font-weight: 500;
 }
+
+@media screen and (max-width: 767px) {
+    .spbr {
+        display: block;
+    }
+
+    .concept_content>p {
+        margin-bottom: 60px;
+    }
+
+    .main_copy {
+        font-size: 24px;
+    }
+
+    .sub_copy {
+        font-size: 14px;
+        margin-bottom: 36px;
+    }
+
+    .copy_discription {
+        font-size: 12px;
+    }
+}
+
 
 .bg_wrap4 {
     background-image: url(../images/pc_footer.jpg);
@@ -249,6 +381,11 @@ h2 {
     justify-content: space-between;
     align-items: center;
     margin-left: 80px;
+    width: 60%;
+}
+
+.footer_group>div>nav {
+    width: 100%;
 }
 
 .footer_group img {
@@ -267,6 +404,9 @@ h2 {
     margin-left: 80px;
     padding-bottom: 24px;
 }
+
+
+
 
 /* お問い合わせボタン */
 .button_contact a {
@@ -357,6 +497,15 @@ h2 {
     margin: 0 auto;
 }
 
+@media screen and (max-width: 767px) {
+    .ex_slide {
+        width: 65%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+}
+
 
 
 .skill-container {
@@ -365,7 +514,7 @@ h2 {
     margin: 0 auto;
     justify-content: center;
     gap: 8%;
-    padding: 0 10px;
+    padding: 0 40px;
 }
 
 
@@ -442,7 +591,38 @@ h2 {
 
 
 /* WORKSページ */
+
 /* カテゴリーボタン */
+/* 絞り込み対象外を消す（必須） */
+.work-card.is-hide {
+    display: none;
+}
+
+/* 選択中のボタンの見た目（お好みで） */
+.btn_works.is-active {
+    background-color: #A65871;
+    /* ピンク系 */
+    color: #fff;
+}
+
+/* フェードインのアニメーション（任意） */
+.work-card {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 .btn_works {
     color: #A65871;
     border: solid 1px #A65871;
@@ -480,6 +660,23 @@ h2 {
     /* ボタン全体の横幅を抑えると綺麗に見えます */
     margin: 0 auto;
     /* 中央寄せ */
+}
+
+/* Coming Soon メッセージの見た目 */
+.coming-soon-text {
+    display: block;
+    /* ブロック要素として扱う */
+    width: 100%;
+    /* 横幅をいっぱいまで広げる */
+    text-align: center;
+    /* 中の文字を中央に寄せる */
+    margin: 0 auto;
+    /* 左右の余白を自動調整して中央配置 */
+    padding: 120px 0;
+    /* 上下にたっぷりと余白を作って目立たせる */
+    font-size: 2rem;
+    color: #A65871;
+    font-family: "Montserrat", sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -624,16 +821,18 @@ h2 {
     margin: 4px 0 0;
 }
 
-.works-main-visual {
-    width: 100%;
-    aspect-ratio: 1000 / 500;
-    /* モックアップサイズを維持 */
-}
-
 .works-main-visual img {
-    width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+.logo-design {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    max-width: 560px;
+    height: auto;
+    padding-top: 60px;
 }
 
 .works-info-container {
