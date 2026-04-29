@@ -376,7 +376,7 @@
             <div class="footer_group">
                 <div class="footer_nav">
                     <nav class="pc_nav">
-                        <ul class="footer_menu">
+                        <ul>
                             <li><a href="./index.html#concept">CONCEPT</a></li>
                             <li><a href="./about.html">ABOUT</a></li>
                             <li><a href="./experience.html">EXPERIENCE<br class="sp-only"></a></li>
@@ -384,12 +384,104 @@
                             <li><a href="./contact.html">CONTACT</a></li>
                         </ul>
                     </nav>
+
+                    <nav class="sp_nav">
+                        <ul>
+                            <li><a href="./index.html#concept">CONCEPT</a></li>
+                            <li><a href="./about.html">ABOUT</a></li>
+                            <li><a href="./experience.html">EXPERIENCE<br class="sp-only"></a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="./works.html">WORKS</a></li>
+                            <li><a href="./contact.html">CONTACT</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <img src="./images/hana_design_logo.svg" alt="hana design">
+                <a class="top_btn" href="./index.html" target="_self">
+                    <img src="./images/hana_design_logo.svg" alt="hana design">
+                </a>
             </div>
             <p class="copyright">©2026 hana design</p>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        const hamBtn = document.querySelector('.hamburger-overlay');
+        const navOverlay = document.querySelector('.nav-overlay');
+
+        hamBtn.addEventListener('click', function () {
+            // ボタンの見た目（✕印）を切り替え
+            this.classList.toggle('active');
+
+            // メニューの表示・非表示を切り替え
+            navOverlay.classList.toggle('active');
+
+            // アクセシビリティ：開閉状態を aria-expanded に反映
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+        });
+
+        // メニュー内のリンクをクリックしたらメニューを閉じる
+        const navLinks = document.querySelectorAll('.nav-overlay__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamBtn.classList.remove('active');
+                navOverlay.classList.remove('active');
+                hamBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            // --- A. スライダー（Slick）の設定関数 ---
+            function sliderSetting() {
+                const width = $(window).width();
+                if (width <= 767) {
+                    // スマホの時だけslickを動かす
+                    $('.ex_slider').not('.slick-initialized').slick({
+                        arrows: false,
+                        dots: true,
+                        centerMode: true,
+                        centerPadding: '10%',
+                        slidesToShow: 1,
+                        infinite: false
+                    });
+                } else {
+                    // PCの時はスライダー機能を解除
+                    if ($('.ex_slider').hasClass('slick-initialized')) {
+                        $('.ex_slider').slick('unslick');
+                    }
+                }
+            }
+
+            // 初期実行
+            sliderSetting();
+
+            // リサイズ時の再計算
+            $(window).on('resize', function () {
+                sliderSetting();
+            });
+
+            // --- B. スクロール時のアニメーション判定（フェードアップ & くるくる） ---
+            $(window).on('scroll load', function () {
+                const scrollTop = $(this).scrollTop();
+                const windowHeight = $(this).height();
+
+                // 1. フェードアップ（.anim-box）
+                $('.anim-box').each(function () {
+                    const target = $(this).offset().top;
+                    if (scrollTop > target - windowHeight + 150) {
+                        $(this).addClass('is-animated');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

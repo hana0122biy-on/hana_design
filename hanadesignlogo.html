@@ -81,6 +81,35 @@
                     </ul>
                 </nav>
             </div>
+            <div class="sp_header">
+                <button class="hamburger-overlay" aria-label="メニュー" aria-controls="overlay-menu" aria-expanded="false">
+                    <span class="hamburger-overlay__line"></span>
+                    <span class="hamburger-overlay__line"></span>
+                </button>
+
+                <nav id="overlay-menu" class="nav-overlay" aria-hidden="true">
+                    <div class="nav-overlay__content">
+                        <ul class="nav-overlay__list">
+                            <li class="nav-overlay__item"><a href="#concept" class="nav-overlay__link">CONCEPT</a></li>
+                            <li class="nav-overlay__item"><a href="#about" class="nav-overlay__link">ABOUT</a></li>
+                            <li class="nav-overlay__item"><a href="#experience" class="nav-overlay__link">EXPERIENCE</a>
+                            </li>
+                            <li class="nav-overlay__item"><a href="#works" class="nav-overlay__link">WORKS</a></li>
+                        </ul>
+
+                        <div class="menu_contact">
+                            <h2 class="contact_title">CONTACT</h2>
+                            <p>お問い合わせは下記フォームまたは<br class="spbr">InstagramのDMよりお願いいたします。</p>
+                            <div class="button_contact">
+                                <a class="contact_btn" href="./contact.html">お問い合わせ</a>
+                                <a class="sns_btn" href="https://www.instagram.com/__hana_design/" target="_blank">
+                                    <img src="./images/sns_btn_ig.svg" alt="Instagram">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
 
@@ -139,6 +168,10 @@
                 </div>
             </dl>
         </div>
+        <div class="works-visual-yoko2">
+            <img class="pc-image" src="./images/hana_design_logo_detail1.jpg" alt="hana design ロゴ ピンク">
+            <img class="sp-image" src="./images/hana_design_logo_detail2.jpg" alt="hana design ロゴ ホワイト">
+        </div>
     </section>
 
 
@@ -160,7 +193,7 @@
             <div class="footer_group">
                 <div class="footer_nav">
                     <nav class="pc_nav">
-                        <ul class="footer_menu">
+                        <ul>
                             <li><a href="./index.html#concept">CONCEPT</a></li>
                             <li><a href="./about.html">ABOUT</a></li>
                             <li><a href="./experience.html">EXPERIENCE<br class="sp-only"></a></li>
@@ -168,12 +201,112 @@
                             <li><a href="./contact.html">CONTACT</a></li>
                         </ul>
                     </nav>
+
+                    <nav class="sp_nav">
+                        <ul>
+                            <li><a href="./index.html#concept">CONCEPT</a></li>
+                            <li><a href="./about.html">ABOUT</a></li>
+                            <li><a href="./experience.html">EXPERIENCE<br class="sp-only"></a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="./works.html">WORKS</a></li>
+                            <li><a href="./contact.html">CONTACT</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <img src="./images/hana_design_logo.svg" alt="hana design">
+                <a class="top_btn" href="./index.html" target="_self">
+                    <img src="./images/hana_design_logo.svg" alt="hana design">
+                </a>
             </div>
             <p class="copyright">©2026 hana design</p>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        const hamBtn = document.querySelector('.hamburger-overlay');
+        const navOverlay = document.querySelector('.nav-overlay');
+
+        hamBtn.addEventListener('click', function () {
+            // ボタンの見た目（✕印）を切り替え
+            this.classList.toggle('active');
+
+            // メニューの表示・非表示を切り替え
+            navOverlay.classList.toggle('active');
+
+            // アクセシビリティ：開閉状態を aria-expanded に反映
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+        });
+
+        // メニュー内のリンクをクリックしたらメニューを閉じる
+        const navLinks = document.querySelectorAll('.nav-overlay__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamBtn.classList.remove('active');
+                navOverlay.classList.remove('active');
+                hamBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            // --- A. スライダー（Slick）の設定関数 ---
+            function sliderSetting() {
+                const width = $(window).width();
+                if (width <= 767) {
+                    // スマホの時だけslickを動かす
+                    $('.ex_slider').not('.slick-initialized').slick({
+                        arrows: false,
+                        dots: true,
+                        centerMode: true,
+                        centerPadding: '10%',
+                        slidesToShow: 1,
+                        infinite: false
+                    });
+                } else {
+                    // PCの時はスライダー機能を解除
+                    if ($('.ex_slider').hasClass('slick-initialized')) {
+                        $('.ex_slider').slick('unslick');
+                    }
+                }
+            }
+
+            // 初期実行
+            sliderSetting();
+
+            // リサイズ時の再計算
+            $(window).on('resize', function () {
+                sliderSetting();
+            });
+
+            // --- B. スクロール時のアニメーション判定（フェードアップ & くるくる） ---
+            $(window).on('scroll load', function () {
+                const scrollTop = $(this).scrollTop();
+                const windowHeight = $(this).height();
+
+                // 1. フェードアップ（.anim-box）
+                $('.anim-box').each(function () {
+                    const target = $(this).offset().top;
+                    if (scrollTop > target - windowHeight + 150) {
+                        $(this).addClass('is-animated');
+                    }
+                });
+
+                // 2. くるくる画像（.kurukuru）
+                $('.kurukuru').each(function () {
+                    const target = $(this).offset().top;
+                    if (scrollTop > target - windowHeight + 150) {
+                        $(this).addClass('is-animated');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

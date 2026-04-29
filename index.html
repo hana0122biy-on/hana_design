@@ -21,59 +21,15 @@
 
 </head>
 
-<script>
-    $(function () {
-        const scrollContainer = $('.scroll-container');
-        const circleImg = $('.js-circle');
-
-        // 画像のURLを正確に指定
-        const whiteSrc = './images/hana_circle.svg';
-        const pinkSrc = './images/hana_circle_pink.svg';
-
-        $(window).on('scroll', function () {
-            const scrollTop = $(this).scrollTop();
-            const aboutPos = $('#pc_top_about').offset().top; // IDを修正済み
-
-            if (scrollTop > aboutPos - 100) {
-                // 【第3段階】ABOUT以降：ピンク・上向きで「表示」
-                scrollContainer.addClass('is-active is-visible');
-                circleImg.attr('src', pinkSrc);
-            } else if (scrollTop > 200) {
-                // 【第2段階】200px〜ABOUT手前：フェードアウトして「非表示」
-                scrollContainer.removeClass('is-active is-visible');
-            } else {
-                // 【第1段階】最初〜200px：白・下向きで「表示」
-                scrollContainer.removeClass('is-active');
-                scrollContainer.addClass('is-visible');
-                circleImg.attr('src', whiteSrc);
-            }
-        });
-    });
-
-    $(window).on('scroll load', function () {
-        $('.anim-box').each(function () {
-            const target = $(this).offset().top;
-            const scroll = $(window).scrollTop();
-            const windowHeight = $(window).height();
-
-            if (scroll > target - windowHeight + 100) {
-                $(this).addClass('is-animated');
-            }
-        });
-    });
-</script>
 
 
 
 <body>
     <div class="bg_wrap1 bg_rgba1">
         <div class="header01">
-            <!-- <h1>
-                <img src="./images/hana_design_logo.svg" alt="hana design" class="ico-svg-03 path">
-            </h1> -->
             <div class="header01">
                 <h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 535 110" class="ico-svg-03">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427 214" class="ico-svg-03">
 
                         <path class="cls-1 path"
                             d="M90.39,196.66v10.48h-3.34v-10.1c0-3.57-1.81-5.32-4.97-5.32-3.54,0-5.84,2.09-5.84,6.04v9.38h-3.34v-25.49h3.34v9.86c1.39-1.75,3.68-2.75,6.5-2.75,4.48,0,7.64,2.54,7.64,7.9Z" />
@@ -374,6 +330,66 @@
             });
         });
     </script>
+
+    <script>
+        $(function () {
+            const scrollContainer = $('.scroll-container');
+            const circleImg = $('.js-circle');
+
+            const whiteSrc = './images/hana_circle.svg';
+            const pinkSrc = './images/hana_circle_pink.svg';
+
+            $(window).on('scroll load', function () {
+                const scrollTop = $(this).scrollTop();
+                const windowHeight = $(window).height();
+                const windowWidth = $(this).width(); // 画面幅を取得
+
+                // 各セクションの位置を取得
+                const conceptPos = $('.bg_wrap1').offset().top;
+                const aboutPos = $('#about').offset().top;
+                const worksPos = $('#works').offset().top;
+
+                // --- スマホかどうかのフラグ ---
+                const isSp = windowWidth <= 767;
+
+                // --- スクロールアイコンの制御 ---
+                if (isSp) {
+                    // 【スマホ版】
+                    if (scrollTop > 50) {
+                        // 50px（少しでも動いたら）すぐにフェードアウト
+                        scrollContainer.removeClass('is-visible');
+                    } else {
+                        // 一番上の時だけ表示
+                        scrollContainer.removeClass('is-active is-pink').addClass('is-visible');
+                        circleImg.attr('src', whiteSrc);
+                    }
+                } else {
+                    // 【PC版】これまでの挙動を維持
+                    if (scrollTop > worksPos - windowHeight / 2) {
+                        scrollContainer.addClass('is-active is-visible').removeClass('is-pink');
+                        circleImg.attr('src', whiteSrc);
+                    } else if (scrollTop > aboutPos - windowHeight / 2) {
+                        scrollContainer.addClass('is-active is-visible is-pink');
+                        circleImg.attr('src', pinkSrc);
+                    } else if (scrollTop > conceptPos + 300) { // さっき調整した数値
+                        scrollContainer.removeClass('is-visible');
+                    } else {
+                        scrollContainer.removeClass('is-active is-pink').addClass('is-visible');
+                        circleImg.attr('src', whiteSrc);
+                    }
+                }
+
+                // --- フェードアップアニメーション（anim-box）の制御 ---
+                $('.anim-box').each(function () {
+                    const target = $(this).offset().top;
+                    if (scrollTop > target - windowHeight + 150) { // 判定を150pxに甘くして見えやすく
+                        $(this).addClass('is-animated');
+                    }
+                });
+            });
+        });
+    </script>
+
 
 </body>
 
