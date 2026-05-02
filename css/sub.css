@@ -1047,9 +1047,11 @@ h2 {
     color: #fff;
 }
 
-/* フェードインのアニメーション（任意） */
-.work-card {
-    animation: fadeIn 0.5s ease;
+/* フェードインのアニメーション */
+/* .work-card,
+.work-detail,
+.thanks-container {
+    animation: fadeIn 1.0s ease;
 }
 
 @keyframes fadeIn {
@@ -1062,7 +1064,7 @@ h2 {
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */
 
 
 .btn_works {
@@ -1148,6 +1150,111 @@ h2 {
     display: block;
 }
 
+/* --- 実績カード：画像ホバーアニメーション全体 --- */
+
+/* 1. 画像を囲む親要素（ズームや枠線の基準） */
+.zoom_box {
+    position: relative;
+    overflow: hidden;
+    /* ズームではみ出た画像を隠す */
+    display: block;
+    cursor: pointer;
+    background-color: #000;
+    /* 隙間から背景が見えないように（お好みで） */
+}
+
+/* 2. 画像自体の設定 */
+.zoom_img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+    /* ズームの速度 */
+}
+
+/* 3. 背景の色の膜（オーバーレイ） */
+.zoom_box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(166, 88, 113, 0.6);
+    /* 既存のピンク系オーバーレイ */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+/* 4. カプセル型の「枠線」専用（40度傾ける） */
+.zoom_box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 中央配置・少し縮小・40度回転させた状態で待機 */
+    transform: translate(-50%, -50%) scale(0.8) rotate(40deg);
+
+    width: 160px;
+    /* 楕円の横幅 */
+    height: 192px;
+    /* 楕円の縦幅 */
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    /* 白い細い線 */
+    border-radius: 50%;
+
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 2;
+}
+
+/* 5. 「More」のテキスト（傾けない） */
+.more-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 中央配置・少し縮小（rotateは入れないことで水平を維持） */
+    transform: translate(-50%, -50%) scale(0.8);
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 3;
+    /* 枠線(z-index:2)より上に配置 */
+}
+
+/* --- ホバー時の変化 --- */
+
+/* 画像をズーム */
+.zoom_box:hover .zoom_img {
+    transform: scale(1.1);
+}
+
+/* 背景色を表示 */
+.zoom_box:hover::before {
+    opacity: 1;
+}
+
+/* 枠線を表示（40度を保ったまま実寸大に） */
+.zoom_box:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.0) rotate(40deg);
+}
+
+/* 文字を表示（水平を保ったまま実寸大に） */
+.zoom_box:hover .more-text {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.0);
+}
+
+
+
 .work-card-footer {
     border-top: 1px solid #A7A3A4;
     /* 上の区切り線 */
@@ -1182,6 +1289,81 @@ h2 {
     margin: 90px auto;
     gap: 2%;
 }
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-numbers {
+    font-family: "Montserrat", sans-serif;
+    color: #474747;
+    font-size: 13px;
+    line-height: 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border: solid 1px transparent;
+    border-radius: 100%;
+    margin: 0 6px;
+}
+
+.pagination .current {
+    border: solid 1px #474747;
+}
+
+.pagination .prev,
+.pagination .next {
+    position: relative;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border: solid 1px #474747;
+    border-radius: 100%;
+}
+
+.pagination .prev::after,
+.pagination .next::after {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: solid 1px #474747;
+    border-right: solid 1px #474747;
+    margin: auto;
+}
+
+.pagination .prev::after {
+    transform: rotate(225deg);
+}
+
+.pagination .next::after {
+    transform: rotate(45deg);
+}
+
+.pagination a:hover {
+    border: solid 1px #474747;
+    transition: .3s;
+}
+
+.pagination .prev:hover {
+    transform: translateX(-3px)
+}
+
+.pagination .next:hover {
+    transform: translateX(3px)
+}
+
 
 @media (max-width: 767px) {
     .btn_works {
@@ -1724,11 +1906,11 @@ textarea.c-form__input {
 }
 
 .delay-2 {
-    animation-delay: 0.6s;
+    animation-delay: 0.8s;
 }
 
 .delay-4 {
-    animation-delay: 0.8s;
+    animation-delay: 1s;
 }
 
 @keyframes fadeup {

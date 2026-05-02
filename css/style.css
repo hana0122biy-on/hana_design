@@ -8,10 +8,29 @@ body {
     background-image: url(../images/pc_main_01.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    background-position: center;
+    /* 中央に合わせる */
+
+    /* ここが重要：画像を画面に固定する */
+    background-attachment: fixed;
+
+    width: 100%;
+    min-height: 100vh;
+    /* 最低でも画面いっぱいの高さにする */
 }
 
-.bg_rgba1 .concept1 {
+.bg_rgba1 {
     position: relative;
+}
+
+/* --- 2. concept1 の設定 --- */
+.concept1 {
+    position: relative;
+    width: 100%;
+    /* 背景画像の上を通過するように、十分な余白や高さを設定 */
+    padding: 100px 0;
+    z-index: 1;
 }
 
 .concept1::before {
@@ -20,9 +39,19 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    bottom: 0;
+    top: 0;
+    /* bottom: 0 ではなく top: 0 にすると安定します */
     left: 0;
-    z-index: 1;
+    z-index: -1;
+    /* 文字の後ろ、かつ bg_wrap1 の画像より前に配置 */
+}
+
+/* --- 4. 中の要素（文字やロゴ） --- */
+.concept1 .div {
+    /* concept1 直下の div など */
+    position: relative;
+    z-index: 2;
+    /* 半透過背景より手前に出す */
 }
 
 .header01 {
@@ -45,6 +74,7 @@ body {
     right: 0;
     width: 100%;
     box-sizing: border-box;
+    z-index: 100;
 }
 
 h1 {
@@ -53,10 +83,12 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 100;
 }
 
 .sp_header {
     display: none;
+    z-index: 100;
 }
 
 @media screen and (max-width:767px) {
@@ -309,6 +341,7 @@ h1 {
     margin-bottom: 327px;
 }
 
+
 @media screen and (max-width:767px) {
     .concept1 {
         padding: 0 30px;
@@ -477,32 +510,74 @@ h1 {
 
 
 
+/* --- bg_wrap2 本体の設定 --- */
 .bg_wrap2 {
-    background-image: url(../images/pc_main_02.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.bg_rgba2 {
     position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* ここ自体の background-image は削除または none にします */
+    background: none;
+    /* 中のマイナス z-index (背景) が外に漏れないようにする */
+    isolation: isolate;
+    /* 大事：この箱からはみ出るものはすべて表示しない */
+    overflow: hidden;
 }
 
-.bg_rgba2::before {
-    background: rgba(49, 16, 51, 0.3);
-    content: '';
+/* --- 【魔法の部分】2枚目の固定背景 --- */
+.bg_wrap2::after {
+    content: "";
+    position: fixed;
+    /* 画面に固定 */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    position: absolute;
-    left: 0;
+    background-image: url(../images/pc_main_02.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 1枚目の背景より上で、コンテンツより下 */
+    z-index: -2;
+
+    /* 最初は透明 */
+    opacity: 0;
+    transition: opacity 0.1s ease-out, visibility 0.1s;
 }
 
+/* スクロールして bg_wrap2 が見えたら背景をフェードイン */
+.bg_wrap2.is-animated::after {
+    opacity: 1;
+}
+
+/* --- 半透過の紫レイヤー --- */
+.bg_rgba2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(49, 16, 51, 0.3);
+    /* 背景画像の上、テキストの下に配置 */
+    z-index: -1;
+    transition: opacity 0.1s ease-out;
+}
+
+/* is-animated がついている時（そのエリアにいる時）だけ表示 */
+.bg_wrap2.is-animated .bg_rgba2::before {
+    opacity: 1;
+}
+
+/* --- コンテンツの設定 --- */
 .concept2 {
     display: flex;
     justify-content: space-between;
     max-width: 1000px;
     margin: 0 auto;
-    z-index: 2;
     position: relative;
+    z-index: 2;
+    /* 背景より確実に手前に */
     padding: 0 80px;
 }
 
@@ -519,6 +594,20 @@ h1 {
     font-size: 24px;
     margin-bottom: 40px;
 }
+
+/* 追尾 */
+.concept_logo.fixed {
+    position: fixed;
+    top: 120px;
+    right: 80px;
+    z-index: +1;
+}
+
+.concept_logo.fixed.none {
+    opacity: 0;
+    z-index: -1;
+}
+
 
 @media screen and (max-width:767px) {
     .concept2 {
@@ -759,6 +848,7 @@ h2 {
     transform: translate(-50%, 0);
     width: 1000px;
     padding: 0 10px;
+    z-index: 150;
 }
 
 .works_item {
@@ -803,6 +893,75 @@ h2 {
 .item_03 {
     margin-top: 40px;
     padding-left: 40px;
+}
+
+
+/* --- 共通：外枠の設定 --- */
+.img-wrap-right,
+.img-wrap-left {
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* 画面内に入った時の共通の動き（フェードアップ） */
+.img-wrap-right.anim-box,
+.img-wrap-left.anim-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* 右に抜けるアニメーション（img-wrap-right用） */
+.img-wrap-right.anim-box::before {
+    animation: img-wrap-right-slide 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 左に抜けるアニメーション（img-wrap-left用） */
+.img-wrap-left.anim-box::before {
+    animation: img-wrap-left-slide 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes img-wrap-right-slide {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes img-wrap-left-slide {
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* --- 共通：中の画像の動き（ズーム ＋ ふわふわ） --- */
+.img-wrap-right img,
+.img-wrap-left img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: scale(1.1);
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.img-wrap-right.is-animated img,
+.img-wrap-left.is-animated img {
+    transform: scale(1.0);
+    animation: fuwafuwa 4s ease-in-out infinite alternate;
+    animation-delay: 1.5s;
+}
+
+@keyframes fuwafuwa {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-8px) scale(1.03);
+    }
 }
 
 
@@ -881,6 +1040,7 @@ footer>div {
 
 .footer_group>div>nav {
     width: 100%;
+    z-index: 200;
 }
 
 .top_btn {
@@ -1167,36 +1327,43 @@ footer>div {
 
 /* アニメーション */
 /* フェードアップ */
+/* --- 1. アニメーション前の状態（transitionを準備） --- */
 .fadeup {
     opacity: 0;
-    transform: translateY(30px);
+    /* 3D移動を指示してGPU（描画専用のチップ）を使わせるのがコツ */
+    transform: translate3d(0, 40px, 0);
+    /* 1.2sくらいが、ゆっくりかつ滑らかに見える限界値です */
+    transition: opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+        transform 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+    /* 描画を滑らかにするおまじない */
+    will-change: opacity, transform;
 }
 
-/* JSで is-animated クラスがついた瞬間にアニメーション開始 */
-.anim-box.fadeup.is-animated {
-    animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+/* --- 2. シール（is-animated）が貼られた時の状態 --- */
+.anim-box.is-animated .fadeup {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
 }
 
-.delay-1 {
-    animation-delay: 0.4s;
+/* --- 3. delay（遅延）の設定 --- */
+/* transition-delay を使うことで、動き出しのタイミングをずらします */
+.anim-box.is-animated .delay-1 {
+    transition-delay: 0.4s;
 }
 
-.delay-2 {
-    animation-delay: 0.6s;
+.anim-box.is-animated .delay-2 {
+    transition-delay: 0.8s;
 }
 
-.delay-4 {
-    animation-delay: 0.8s;
+.anim-box.is-animated .delay-3 {
+    transition-delay: 1.2s;
 }
 
 @keyframes fadeup {
     0% {
-        transform: translateY(30px);
+        /* 移動距離を 20px から 50px に増やす（下からグッと上がってくる感じ） */
+        transform: translateY(50px);
         opacity: 0;
-    }
-
-    80% {
-        opacity: 1;
     }
 
     100% {
@@ -1204,6 +1371,8 @@ footer>div {
         transform: translateY(0);
     }
 }
+
+
 
 /* 縁の線を書く */
 /* SVG全体のサイズ調整 */
