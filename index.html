@@ -74,9 +74,9 @@
             <nav class="pc_nav">
                 <ul>
                     <li><a href="#concept">CONCEPT</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#experience">EXPERIENCE</a></li>
-                    <li><a href="#works">WORKS</a></li>
+                    <li><a href="./about.html">ABOUT</a></li>
+                    <li><a href="./experience.html">EXPERIENCE</a></li>
+                    <li><a href="./works.html">WORKS</a></li>
                     <li><a href="./contact.html">CONTACT</a></li>
                 </ul>
             </nav>
@@ -379,14 +379,6 @@
                         circleImg.attr('src', whiteSrc);
                     }
                 }
-
-                // --- フェードアップアニメーション（anim-box）の制御 ---
-                $('.anim-box').each(function () {
-                    const target = $(this).offset().top;
-                    if (scrollTop > target - windowHeight + 150) { // 判定を150pxに甘くして見えやすく
-                        $(this).addClass('is-animated');
-                    }
-                });
             });
         });
     </script>
@@ -398,7 +390,7 @@
             var distance = 0;
 
             $(document).scroll(function () {
-                distance = $(this).scrollTop(); //スクロールした距離を取得
+                distance = $(this).scrollTop() + $(window).innerHeight() / 2; //スクロールした距離を取得
 
                 if (scrollStart <= distance) { //スクロール距離が『.sikaku_box』の位置を超えたら
                     $('.concept_logo').addClass('fixed'); //class『fixed』を追加
@@ -425,7 +417,7 @@
                     var targetHeight = $(elem).outerHeight(); // 要素自体の高さ
 
                     var showClass = "is-animated"; // 現在のCSSに合わせて変更
-                    var timing = 100; // 100px入ったら発火（お好みで0でもOK）
+                    var timing = 300; // 100px入ったら発火
 
                     // 画面内に入っている時だけ showClass をつける
                     if (three >= one - two + timing && three <= one + targetHeight) {
