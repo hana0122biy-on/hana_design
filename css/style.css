@@ -29,7 +29,7 @@ body {
     position: relative;
     width: 100%;
     /* 背景画像の上を通過するように、十分な余白や高さを設定 */
-    padding: 100px 0;
+    /* padding: 100px 0; */
     z-index: 1;
 }
 
@@ -44,14 +44,6 @@ body {
     left: 0;
     z-index: -1;
     /* 文字の後ろ、かつ bg_wrap1 の画像より前に配置 */
-}
-
-/* --- 4. 中の要素（文字やロゴ） --- */
-.concept1 .div {
-    /* concept1 直下の div など */
-    position: relative;
-    z-index: 2;
-    /* 半透過背景より手前に出す */
 }
 
 .header01 {
@@ -309,17 +301,17 @@ h1 {
 }
 
 .concept1 img {
-    width: 224px;
+    width: 20%;
     position: absolute;
     top: 50%;
-    right: 5%;
+    right: 10%;
 }
 
 /* 追従 */
 .concept_logo.fixed {
     position: fixed;
     top: 50%;
-    right: 5%;
+    right: 10%;
     z-index: +1;
 }
 
@@ -335,7 +327,6 @@ h1 {
     max-width: 1000px;
     margin: 0 auto;
     z-index: 2;
-    position: relative;
 }
 
 .concept_text1 {
@@ -399,7 +390,7 @@ h1 {
     position: fixed;
     right: 80px;
     bottom: 80px;
-    z-index: 100;
+    z-index: 300;
     width: 120px;
     height: 120px;
     display: flex;
@@ -655,7 +646,7 @@ h2 {
 @media screen and (max-width:767px) {
     h2 {
         font-size: 32px;
-        margin-top: 96px;
+        padding-top: 96px;
     }
 
     .subtitle {
@@ -694,7 +685,7 @@ h2 {
 
 @media screen and (max-width:767px) {
     .pc_top_about {
-        margin: 0 30px;
+        padding-right: 30px;
     }
 
     .introduction {
@@ -825,7 +816,7 @@ h2 {
     }
 
     .sp_btn {
-        display: flex;
+        display: block;
         margin: 0 auto;
     }
 }
@@ -1176,14 +1167,14 @@ footer>div {
 }
 
 .button_more01 a::before {
-    border-right: 1px solid #fff;
-    border-top: 1px solid #fff;
+    border-right: 1px solid #474747;
+    border-top: 1px solid #474747;
     bottom: 0;
     content: "";
     height: 10px;
     margin: auto;
     position: absolute;
-    right: 40px;
+    right: 35px;
     top: 0;
     transform: rotate(45deg);
     transition: right .5s;
@@ -1191,7 +1182,9 @@ footer>div {
 }
 
 .button_more01 a:hover::before {
-    right: 35px;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+    right: 30px;
 }
 
 @media screen and (max-width:767px) {
@@ -1203,7 +1196,7 @@ footer>div {
 
     .button_more01 a::before {
         height: 8px;
-        right: 24px;
+        right: 20px;
         width: 8px;
     }
 
@@ -1243,14 +1236,14 @@ footer>div {
 }
 
 .button_more02 a::before {
-    border-right: 1px solid #A65871ff;
-    border-top: 1px solid #A65871ff;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
     bottom: 0;
     content: "";
     height: 10px;
     margin: auto;
     position: absolute;
-    right: 40px;
+    right: 35px;
     top: 0;
     transform: rotate(45deg);
     transition: right .5s;
@@ -1258,7 +1251,9 @@ footer>div {
 }
 
 .button_more02 a:hover::before {
-    right: 35px;
+    border-right: 1px solid #A65871ff;
+    border-top: 1px solid #A65871ff;
+    right: 30px;
 }
 
 @media screen and (max-width:767px) {
@@ -1270,7 +1265,7 @@ footer>div {
 
     .button_more02 a::before {
         height: 8px;
-        right: 24px;
+        right: 20px;
         width: 8px;
     }
 
@@ -1304,22 +1299,24 @@ footer>div {
 }
 
 .contact_btn::before {
-    border-right: 1px solid #A65871;
-    border-top: 1px solid #A65871;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
     bottom: 0;
     content: "";
-    height: 10px;
+    height: 12px;
     margin: auto;
     position: absolute;
-    right: 40px;
-    top: 0;
+    right: 30px;
+    top: 3px;
     transform: rotate(45deg);
     transition: right .5s;
-    width: 10px;
+    width: 12px;
 }
 
 .contact_btn:hover::before {
-    right: 35px;
+    border-right: 1px solid #A65871;
+    border-top: 1px solid #A65871;
+    right: 26px;
 }
 
 @media screen and (max-width:767px) {
@@ -1331,7 +1328,9 @@ footer>div {
     }
 
     .contact_btn::before {
-        right: 32px;
+        right: 28px;
+        height: 10px;
+        width: 10px;
     }
 
     .contact_btn:hover::before {
@@ -1363,15 +1362,15 @@ footer>div {
 /* --- 3. delay（遅延）の設定 --- */
 /* transition-delay を使うことで、動き出しのタイミングをずらします */
 .anim-box.is-animated .delay-1 {
-    transition-delay: 0.4s;
+    transition-delay: 0.6s;
 }
 
 .anim-box.is-animated .delay-2 {
-    transition-delay: 0.8s;
+    transition-delay: 1s;
 }
 
 .anim-box.is-animated .delay-3 {
-    transition-delay: 1.2s;
+    transition-delay: 1.4s;
 }
 
 @keyframes fadeup {
@@ -1406,7 +1405,7 @@ footer>div {
     stroke-dasharray: 2000;
     stroke-dashoffset: 2000;
 
-    animation: draw-logo 5s ease-in-out forwards;
+    animation: draw-logo 4s ease-in-out forwards;
 }
 
 @keyframes draw-logo {
@@ -1428,6 +1427,6 @@ footer>div {
 
 @media screen and (max-width:767px) {
     .ico-svg-03 {
-        width: 200px;
+        width: 240px;
     }
 }
