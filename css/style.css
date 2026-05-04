@@ -8,17 +8,25 @@ body {
     background-image: url(../images/pc_main_01.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-
     background-position: center;
-    /* 中央に合わせる */
-
-    /* ここが重要：画像を画面に固定する */
     background-attachment: fixed;
-
     width: 100%;
     min-height: 100vh;
-    /* 最低でも画面いっぱいの高さにする */
 }
+
+/* .bg_wrap1::before {
+    content: "";
+    background-image: url(../images/pc_main_01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    display: block;
+    height: 100%;
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+} */
 
 .bg_rgba1 {
     position: relative;
@@ -84,10 +92,6 @@ h1 {
 }
 
 @media screen and (max-width:767px) {
-    .bg_wrap1 {
-        transform: translate3d(0, 0, 0);
-    }
-
     h1 {
         width: 200px;
     }
@@ -578,7 +582,6 @@ img.concept_logo {
     isolation: isolate;
     /* 大事：この箱からはみ出るものはすべて表示しない */
     overflow: hidden;
-    transform: translate3d(0, 0, 0);
 }
 
 .bg_wrap2::after {
@@ -599,7 +602,7 @@ img.concept_logo {
 
     /* 最初は透明 */
     opacity: 0;
-    transition: opacity 0.1s ease-out, visibility 0.1s;
+    /* transition: opacity 0.1s ease-out, visibility 0.1s; */
 }
 
 /* スクロールして bg_wrap2 が見えたら背景をフェードイン */

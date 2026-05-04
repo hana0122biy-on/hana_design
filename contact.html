@@ -294,6 +294,37 @@
         });
     </script>
 
+    <script>
+        $(function () {
+            // 判定処理を関数として独立させる
+            function checkAnimation() {
+                $(".anim-box").each(function (i, elem) {
+                    var one = $(elem).offset().top;
+                    var two = $(window).height();
+                    var three = $(window).scrollTop();
+                    var targetHeight = $(elem).outerHeight();
+
+                    var showClass = "is-animated";
+                    var timing = 100;
+
+                    // ページ読み込み直後でも、画面内に入っていればクラスをつける
+                    if (three >= one - two + timing && three <= one + targetHeight) {
+                        $(elem).addClass(showClass);
+                    }
+                });
+            }
+
+            // スクロール時だけでなく、読み込み時とリサイズ時にも実行する
+            $(window).on("load scroll resize", function () {
+                checkAnimation();
+            });
+
+            // 初回実行
+            checkAnimation();
+        });
+    </script>
+
+
     <script type="text/javascript">
         let submitted = false;
     </script>
