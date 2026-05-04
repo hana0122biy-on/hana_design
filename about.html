@@ -28,7 +28,7 @@
 <body>
     <div>
         <div class="sub_header">
-            <div class="header_wrap">
+            <div class="header_wrap fixed_header">
                 <h1>
                     <a href="./index.html">
                         <svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 427 214">
@@ -82,7 +82,7 @@
                 </nav>
             </div>
 
-            <div class="sp_header">
+            <div class="sp_header fixed_header">
                 <button class="hamburger-overlay" aria-label="メニュー" aria-controls="overlay-menu" aria-expanded="false">
                     <span class="hamburger-overlay__line"></span>
                     <span class="hamburger-overlay__line"></span>
@@ -122,8 +122,8 @@
             <div>
                 <p class="anim-box fadeup delay-1">ご覧いただきありがとうございます！<br>
                     hana designの Hanakoと申します。<br>
-                    石川県金沢市出身 <br class="spbr-1">現在は中国地方で暮らしています。<br>
-                    漫画・アニメ・ライブ鑑賞と<br class="spbr-1">呑み歩きが趣味です。<br>
+                    石川県金沢市出身 <span style="display: inline-block;">現在は中国地方で暮らしています。</span><br>
+                    漫画・アニメ・ライブ鑑賞と <span style="display: inline-block;">呑み歩きが趣味です。</span>
                 </p>
             </div>
             <img class="kurukuru" src="./images/pc_about_02.jpg" alt="hanako_photo">
@@ -139,7 +139,7 @@
                         <img src="./images/capsule_icon.svg" alt="アイコン">
                     </div>
                     <p class="job_title">生活雑貨店 店長</p>
-                    <p class="job_scope">接客・販売・発注・店頭ディスプレイ企画、<br class="spbr-1">アルバイト採用など</p>
+                    <p class="job_scope">接客・販売・発注・店頭ディスプレイ企画、 <span style="display: inline-block;">アルバイト採用など</span></p>
                 </div>
                 <div class="history_item anim-box fadeup delay-1">
                     <div class="capsule_icon">
@@ -153,21 +153,22 @@
                         <img src="./images/capsule_icon.svg" alt="アイコン">
                     </div>
                     <p class="job_title">アパレル副資材メーカー 営業</p>
-                    <p class="job_scope">ブランドの織ネームや革パッチ、<br class="spbr-1">パッケージなどの提案営業</p>
+                    <p class="job_scope">ブランドの織ネームや革パッチ、 <span style="display: inline-block;">パッケージなどの提案営業</span></p>
                 </div>
                 <div class="history_item  anim-box fadeup delay-3">
                     <div class="capsule_icon">
                         <img src="./images/capsule_icon.svg" alt="アイコン">
                     </div>
                     <p class="job_title">プロスポーツチーム 制作物担当</p>
-                    <p class="job_scope">地元バスケットボールチームの<br class="spbr-1">制作物関連を担当</p>
+                    <p class="job_scope">地元バスケットボールチームの <span style="display: inline-block;">制作物関連を担当</span></p>
                 </div>
                 <div class="history_item  anim-box fadeup delay-4">
                     <div class="capsule_icon">
                         <img src="./images/capsule_icon.svg" alt="アイコン">
                     </div>
                     <p class="job_title">アパレルメーカー デザイナー</p>
-                    <p class="job_scope">楽天市場や自社ECサイトの<br class="spbr-1">商品ページ/バナー/SNSコンテンツ画像<br class="spbr-1">などの制作を担当
+                    <p class="job_scope">楽天市場や自社ECサイトの <span style="display: inline-block;">商品ページ/バナー/SNSコンテンツ画像
+                        </span><span style="display: inline-block;">などの制作を担当</span>
                     </p>
                 </div>
             </div>
@@ -250,6 +251,29 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(window).on('load scroll resize', function () {
+            const scrollTop = $(window).scrollTop();
+            const windowHeight = $(window).height(); // 画面（ブラウザ）の高さを取得
+            const $header = $('.fixed_header');
+            const $footer = $('footer');
+
+            if ($footer.length) {
+                const footerPos = $footer.offset().top;
+
+                /* 
+                   判定：現在のスクロール位置 + 画面の高さ = 「画面の下端」
+                   これがフッターの開始位置（footerPos）を超えた瞬間に実行
+                */
+                if (scrollTop + windowHeight > footerPos) {
+                    $header.addClass('is-hide');
+                } else {
+                    $header.removeClass('is-hide');
+                }
+            }
+        });
+    </script>
 
     <script>
         const hamBtn = document.querySelector('.hamburger-overlay');

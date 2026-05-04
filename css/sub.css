@@ -35,7 +35,8 @@ body {
 
 
 
-.pc_nav ul li a {
+.pc_nav ul li a,
+.sp_nav ul li a {
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
     font-style: italic;
@@ -55,6 +56,32 @@ body {
 
 .sub_header svg path {
     fill: #A65871;
+}
+
+.fixed_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    /* お好みの高さに調整 */
+    background-color: #FAF9F8;
+    /* bodyと同じ色 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5% 0;
+    z-index: 10000;
+    /* 最前面を確保 */
+    box-sizing: border-box;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+/* 消える時の設定 */
+.fixed_header.is-hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 
@@ -587,7 +614,7 @@ h2 {
 }
 
 .spbr,
-.spbr450 {
+.spbr-1 {
     display: none;
 }
 
@@ -622,6 +649,10 @@ h2 {
 
 
 @media screen and (max-width: 767px) {
+    .span {
+        display: inline-block;
+    }
+
     .spbr {
         display: block;
     }
@@ -814,10 +845,6 @@ h2 {
         display: flex;
         gap: 12%;
         margin-bottom: 24px;
-    }
-
-    .sp_nav ul li {
-        font-style: italic;
     }
 
     .pc_nav {
@@ -1052,13 +1079,14 @@ h2 {
     position: relative;
     background: #fff;
     border-radius: 12px;
-    width: 320px;
+    max-width: 320px;
     min-height: 240px;
     padding: 60px 30px 40px;
     /* アイコンが重なる分、上を広めに */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     /* ほんのり影をつけて浮かせる */
     box-sizing: border-box;
+    width: 32%;
 }
 
 /* カプセルアイコンの配置 */
@@ -1128,6 +1156,18 @@ h2 {
 
     .skill-card {
         margin: 64px auto;
+        width: 100%;
+    }
+
+    .skill-category,
+    .skill-list li {
+        font-size: 14px;
+    }
+
+    .skill-icon img {
+        width: 60%;
+        height: auto;
+        display: block;
     }
 }
 
@@ -1880,10 +1920,10 @@ textarea.c-form__input {
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-weight: 300;
     color: #fff;
-    font-size: 24px;
-    padding: 8px 64px;
+    font-size: 16px;
+    padding: 24px 40px;
     border: none;
-    border-radius: 50px;
+    border-radius: 999px;
     cursor: pointer;
     transition: opacity 0.3s;
 }
@@ -1925,6 +1965,7 @@ textarea.c-form__input {
 
     .c-form__submit {
         margin: 0;
+        text-align: center;
     }
 
     .c-form__submit button,

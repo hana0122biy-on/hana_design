@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hana design</title>
+    <link rel="icon" href="favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +71,7 @@
             </div>
 
         </div>
-        <div class="header_wrap">
+        <div class="header_wrap fixed_header">
             <nav class="pc_nav">
                 <ul>
                     <li><a href="#concept">CONCEPT</a></li>
@@ -83,7 +84,7 @@
         </div>
 
 
-        <div class="sp_header">
+        <div class="sp_header fixed_header">
             <button class="hamburger-overlay" aria-label="メニュー" aria-controls="overlay-menu" aria-expanded="false">
                 <span class="hamburger-overlay__line"></span>
                 <span class="hamburger-overlay__line"></span>
@@ -119,10 +120,10 @@
                 <div>
                     <p class="concept_text1 fadeup delay-1">Where ideas bloom</p>
                     <p class="concept_text2 fadeup delay-2">あなたのワクワクする想いを、<br>
-                        形あるデザインとして花咲かせる場所</p>
+                        形あるデザインとして<span style="display: inline-block;">花咲かせる場所</span></p>
                     <p class="concept_text3 fadeup delay-3">誰かにおしゃべりしたくなるような、心躍るアイデア。<br>
-                        まだ言葉にならない、大切な「想い」の種。<br>
-                        hana design は、そんなあなたの「ワクワク」を丁寧な対話で引き出し、<br>
+                        まだ言葉にならない、大切な<span style="display: inline-block;">「想い」の種。</span><br>
+                        hana design は、そんなあなたの<span style="display: inline-block;">「ワクワク」を丁寧な対話で引き出し、</span><br>
                         誠実に向き合うことで、世界にひとつだけのデザインへと育てます。</p>
                 </div>
                 <img src="./images/hana_design_logo.svg" alt="hana design" class="concept_logo">
@@ -166,7 +167,7 @@
                     <a href="./about.html">View More</a>
                 </div>
             </div>
-            <img src="./images/pc_about_01.jpg" alt="hanako_photo" class="anim-box fadeup delay-1">
+            <img src="./images/pc_about_01.jpg" alt="hanako_photo" class="fadeup delay-1">
         </div>
     </section>
 
@@ -256,8 +257,8 @@
             </div>
         </section>
 
-        <footer>
-            <div class="contact_group">
+        <footer class="anim-box">
+            <div class="contact_group fadeup">
                 <div class="contact_container">
                     <h2 class="contact_title">CONTACT</h2>
                     <p>お問い合わせは下記フォームまたは<br class="spbr">InstagramのDMよりお願いいたします。</p>
@@ -270,7 +271,7 @@
                 </div>
             </div>
 
-            <div class="footer_group">
+            <div class="footer_group fadeup delay-1">
                 <div class="footer_nav">
                     <nav class="pc_nav">
                         <ul>
@@ -301,6 +302,36 @@
             <p class="copyright">©2026 hana design</p>
         </footer>
     </div>
+
+    <script>
+        $(window).on('load scroll resize', function () {
+            const scrollTop = $(window).scrollTop();
+            const $header = $('.fixed_header');
+
+            // 各セクションの位置を取得
+            const conceptPos = $('#concept').length ? $('#concept').offset().top : 0;
+            const aboutPos = $('#about').length ? $('#about').offset().top : 0;
+            const worksPos = $('#works').length ? $('#works').offset().top : 0;
+
+            // 消し始めるスクロール量の調整（例：WORKSに入ってさらに200px進んだら）
+            const hideTiming = 600;
+
+            /* --- WORKSセクション＋指定px進んだらフェードアウト --- */
+            if (scrollTop > worksPos + hideTiming) {
+                $header.addClass('is-hide');
+            } else {
+                $header.removeClass('is-hide');
+            }
+
+            // --- ヘッダーの色切り替えロジック ---
+            // 例：ABOUTセクションからWORKSセクションの間だけ色を変える場合
+            if (scrollTop >= aboutPos && scrollTop < worksPos) {
+                $header.addClass('is-gray-mode'); // ピンクにしたい区間
+            } else {
+                $header.removeClass('is-gray-mode'); // それ以外（基本は白など）
+            }
+        });
+    </script>
 
     <script>
         const hamBtn = document.querySelector('.hamburger-overlay');
@@ -394,7 +425,7 @@
                     if (window.matchMedia("(max-width: 767px)").matches) {
                         $('.concept_logo').hide()
                     } else {
-                        if (scrollStart <= distance) { //スクロール距離が『.sikaku_box』の位置を超えたら
+                        if (scrollStart <= distance) {
                             $('.concept_logo').addClass('fixed'); //class『fixed』を追加
                         } else if (scrollStart >= distance) { //スクロールがページ上部まで戻ったら
                             $('.concept_logo').removeClass('fixed'); //class『fixed』を削除

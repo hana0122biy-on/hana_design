@@ -260,6 +260,17 @@ h1 {
         text-align: center;
     }
 
+    .fixed_header.is-gray-mode .hamburger-overlay::before {
+        border: 1px solid #474747;
+        transition: opacity 0.5s ease, visibility 0.5s, transform 0.5s ease;
+    }
+
+    .fixed_header.is-gray-mode .hamburger-overlay__line {
+        background-color: #474747;
+        transition: opacity 0.5s ease, visibility 0.5s, transform 0.5s ease;
+    }
+
+
 }
 
 
@@ -289,10 +300,36 @@ h1 {
     text-decoration: none;
     /* transitionをここに配置（戻る時も滑らかになります） */
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: color 0.4s ease;
+    /* パッではなく、ふわっと変える */
 }
+
+.fixed_header.is-gray-mode .pc_nav ul li a {
+    color: #474747;
+    transition: opacity 0.5s ease, visibility 0.5s, transform 0.5s ease;
+}
+
 
 .pc_nav ul li a:hover {
     transform: translateY(-5px);
+}
+
+.fixed_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+/* フェードアウト用のクラス */
+.fixed_header.is-hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    /* 少し上に逃げながら消えると自然です */
+    pointer-events: none;
+    /* 透明な状態でクリックされるのを防ぐ */
 }
 
 .concept1 {
@@ -307,12 +344,20 @@ h1 {
     right: 10%;
 }
 
+/* 「concept_logoというクラスがついたimg」に対してのみ設定を上書き */
+img.concept_logo {
+    width: 20% !important;
+    /* 元々指定したかったサイズ */
+    height: auto;
+}
+
 /* 追従 */
 .concept_logo.fixed {
     position: fixed;
     top: 50%;
     right: 10%;
     z-index: +1;
+    width: 20% !important;
 }
 
 .concept_logo.fixed.none {
@@ -679,8 +724,13 @@ h2 {
     text-align: right;
 }
 
-.introduction img {
+.introduction img.fadeup {
+    width: 336px !important;
+    /* 強制的に上書き */
+    margin-bottom: 32px;
     margin-left: 64px;
+    height: auto;
+    /* widthに合わせて可変にするため */
 }
 
 @media screen and (max-width:767px) {
@@ -694,9 +744,12 @@ h2 {
         align-items: end;
     }
 
-    .introduction img {
-        width: 55%;
-        margin-bottom: 32px;
+    .introduction img.fadeup {
+        width: 55% !important;
+    }
+
+    .introduction>div>p {
+        font-size: 12px;
     }
 }
 
@@ -778,7 +831,7 @@ h2 {
     .experience {
         display: flex;
         flex-direction: column;
-        margin-bottom: 160px;
+        margin-bottom: 64px;
     }
 
     .ex_box {
@@ -786,7 +839,10 @@ h2 {
         transform: translate(0px, 0px);
         width: 100%;
         background-color: transparent;
+    }
 
+    .ex_text {
+        font-size: 12px;
     }
 
     .ex_slider {
@@ -838,7 +894,8 @@ h2 {
     background-image: url(../images/pc_footer_top.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-
+    position: relative;
+    z-index: 200;
 }
 
 .works_container {
@@ -871,23 +928,36 @@ h2 {
     }
 }
 
-.group1 {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
+
+.group1,
 .group2 {
     display: flex;
     justify-content: space-between;
-    max-width: 1440px;
     margin: 0 auto;
+    /* --- 追加：中身を縦に引き伸ばさない --- */
+    align-items: flex-start;
+}
+
+.group1 {
+    max-width: 1200px;
+}
+
+.group2 {
+    max-width: 1440px;
+}
+
+/* 画像自体の比率を維持するお守り */
+.anim-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* 万が一サイズが指定されても比率を保つ */
 }
 
 .item_02 {
-    margin-top: 480px;
-    padding-left: 30px;
+    margin-top: 320px;
+    margin-left: 30px;
 }
 
 .group2 {
@@ -897,9 +967,44 @@ h2 {
 }
 
 .item_03 {
-    margin-top: 40px;
-    padding-left: 40px;
+    margin-top: 120px;
+    margin-left: 40px;
 }
+
+.item_04 {
+    margin-top: 64px;
+}
+
+
+@media screen and (max-width:767px) {
+    .experience {
+        padding: 0 0 160px;
+    }
+
+    .item_04 {
+        margin-top: -16px;
+    }
+
+    .item_03 {
+        margin-top: 64px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .item_02 {
+        margin-top: 100px;
+    }
+
+    .item_03 {
+        margin-top: 64px;
+    }
+
+    .item_04 {
+        margin-top: 32px;
+    }
+}
+
+
 
 
 /* --- 共通：外枠の設定 --- */
@@ -909,64 +1014,99 @@ h2 {
     position: relative;
     opacity: 0;
     transform: translateY(30px);
+    /* 親要素のフェードアップ */
+    transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+    display: flex;
+    line-height: 0;
+}
+
+.img-wrap-right img,
+.img-wrap-left img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    /* transform: scale(1.1); ← これを削除 */
+    /* transition の transform も不要なら削除してOKです */
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+/* --- 2. 親要素（外枠）にズームをかける --- */
+.img-wrap-right.anim-box,
+.img-wrap-left.anim-box {
+    /* フェードアップしつつ、最初は少し小さめ（または標準）にしておく */
+    opacity: 0;
+    transform: translateY(30px) scale(1.0);
     transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
-/* 画面内に入った時の共通の動き（フェードアップ） */
-.img-wrap-right.anim-box,
-.img-wrap-left.anim-box {
+/* 画面内に入った時（is-animated がついた時） */
+.img-wrap-right.is-animated,
+.img-wrap-left.is-animated {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1.05);
 }
 
+/* --- 3. ふわふわアニメーションの修正（必要であれば） --- */
+/* 画像ではなく「枠ごと」ふわふわさせるか、画像単体のスケールを消します */
+@keyframes fuwafuwa {
+    0% {
+        transform: translateY(0);
+        /* scale(1) を削除 */
+    }
 
-
-/* 右に抜けるアニメーション（img-wrap-right用） */
-.img-wrap-right.anim-box::before {
-    animation: img-wrap-right-slide 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    100% {
+        transform: translateY(-8px);
+        /* scale(1.03) を削除 */
+    }
 }
 
-/* 左に抜けるアニメーション（img-wrap-left用） */
-.img-wrap-left.anim-box::before {
-    animation: img-wrap-left-slide 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+/* --- 追加：カーテン（覆い）の本体設定 --- */
+.img-wrap-right::before,
+.img-wrap-left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    /* わずかに白を混ぜる */
+    backdrop-filter: blur(10px);
+    /* 下の背景をぼかす */
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2;
+    pointer-events: none;
 }
 
-@keyframes img-wrap-right-slide {
+/* 右へ抜ける動き（is-animated がついた瞬間に開始） */
+.img-wrap-right.is-animated::before {
+    animation: img-wrap-right 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 左へ抜ける動き */
+.img-wrap-left.is-animated::before {
+    animation: img-wrap-left 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes img-wrap-right {
+    0% {
+        transform: translateX(0);
+    }
+
     100% {
         transform: translateX(100%);
     }
 }
 
-@keyframes img-wrap-left-slide {
+@keyframes img-wrap-left {
+    0% {
+        transform: translateX(0);
+    }
+
     100% {
         transform: translateX(-100%);
-    }
-}
-
-/* --- 共通：中の画像の動き（ズーム ＋ ふわふわ） --- */
-.img-wrap-right img,
-.img-wrap-left img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transform: scale(1.1);
-    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
-}
-
-.img-wrap-right.is-animated img,
-.img-wrap-left.is-animated img {
-    transform: scale(1.0);
-    animation: fuwafuwa 4s ease-in-out infinite alternate;
-    animation-delay: 1.5s;
-}
-
-@keyframes fuwafuwa {
-    0% {
-        transform: translateY(0) scale(1);
-    }
-
-    100% {
-        transform: translateY(-8px) scale(1.03);
     }
 }
 
