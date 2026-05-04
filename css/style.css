@@ -18,6 +18,8 @@ body {
     width: 100%;
     min-height: 100vh;
     /* 最低でも画面いっぱいの高さにする */
+
+    transform: translate3d(0, 0, 0);
 }
 
 .bg_rgba1 {
@@ -575,6 +577,7 @@ img.concept_logo {
     isolation: isolate;
     /* 大事：この箱からはみ出るものはすべて表示しない */
     overflow: hidden;
+    transform: translate3d(0, 0, 0);
 }
 
 .bg_wrap2::after {
@@ -1502,15 +1505,15 @@ footer>div {
 /* --- 3. delay（遅延）の設定 --- */
 /* transition-delay を使うことで、動き出しのタイミングをずらします */
 .anim-box.is-animated .delay-1 {
-    transition-delay: 0.6s;
+    transition-delay: 0.4s;
 }
 
 .anim-box.is-animated .delay-2 {
-    transition-delay: 1s;
+    transition-delay: 0.8s;
 }
 
 .anim-box.is-animated .delay-3 {
-    transition-delay: 1.4s;
+    transition-delay: 1.2s;
 }
 
 @keyframes fadeup {

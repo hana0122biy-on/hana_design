@@ -70,11 +70,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 5% 0;
+    padding: 30px 5% 24px;
     z-index: 10000;
     /* 最前面を確保 */
     box-sizing: border-box;
-    transition: opacity 0.4s ease, visibility 0.4s;
+    transition: opacity 0.6s ease, visibility 0.6s;
 }
 
 /* 消える時の設定 */
@@ -91,11 +91,16 @@ body {
 
 @media screen and (max-width:767px) {
     .header_wrap {
-        padding: 24px 5% 0;
+        padding: 24px 5% 16px;
     }
 
     .sub_header h1 {
         width: 120px;
+        height: auto;
+        line-height: 1;
+        /* 行の高さを最小限に */
+        margin: 0;
+        /* ブラウザ標準のマージンを完全に消す */
     }
 
     .pc_nav {
@@ -104,6 +109,10 @@ body {
 
     .sp_header {
         display: block;
+        align-items: center;
+        /* 縦方向の中央にロゴとボタンを並べる */
+        padding: 10px 20px;
+        /* 上下に少し余白を作る */
     }
 
     /* overlay-styles.css */
