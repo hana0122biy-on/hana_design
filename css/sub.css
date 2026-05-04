@@ -70,7 +70,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 5% 24px;
+    padding: 24px 5% 24px;
     z-index: 10000;
     /* 最前面を確保 */
     box-sizing: border-box;
@@ -1499,11 +1499,18 @@ h2 {
     }
 
     .works_filter {
+        display: grid;
         /* スマホ版：2列（同じ幅で2等分） */
         grid-template-columns: repeat(2, 1fr);
         gap: 16px 16px;
         padding: 0 30px;
-        max-width: 320px;
+        max-width: 336px;
+        margin: 0 auto 64px;
+        /* --- ここを追加 --- */
+        justify-items: center;
+        /* 子要素（ボタン）を水平方向の中央に寄せる */
+        align-items: center;
+        /* 子要素（ボタン）を垂直方向の中央に寄せる */
     }
 
     .work-card {
@@ -1539,6 +1546,11 @@ h2 {
     .btn_works {
         width: 120px;
     }
+
+    .works_filter {
+        max-width: 256px;
+    }
+
 }
 
 
@@ -1547,7 +1559,7 @@ h2 {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 30px;
-    margin-top: 200px;
+    margin-top: 240px;
 }
 
 .works-detail-header {
@@ -1828,13 +1840,25 @@ h2 {
 .works-visual-yoko2 {
     display: flex;
     margin: 0 auto;
+    max-width: 1000px;
 }
 
 .works-visual-yoko2 img {
-    width: 100%;
+    width: 50%;
 }
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+    .works-visual-yoko2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .works-visual-yoko2 img {
+        width: 80%;
+    }
+
+}
 
 
 /* CONTACTページ */
