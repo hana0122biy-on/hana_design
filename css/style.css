@@ -14,20 +14,6 @@ body {
     min-height: 100vh;
 }
 
-/* .bg_wrap1::before {
-    content: "";
-    background-image: url(../images/pc_main_01.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    width: 100%;
-    display: block;
-    height: 100%;
-    position: absolute;
-    transform: translate3d(0, 0, 0);
-} */
-
 .bg_rgba1 {
     position: relative;
 }
@@ -92,7 +78,17 @@ h1 {
 }
 
 @media screen and (max-width:767px) {
-    .bg_wrap1 {
+    .bg_wrap1::before {
+        content: "";
+        background-image: url(../images/pc_main_01.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        display: block;
+        height: 100%;
+        position: absolute;
         transform: translate3d(0, 0, 0);
     }
 
