@@ -1263,7 +1263,7 @@ h2 {
 }
 
 .work-title {
-    font-size: 1.8vw;
+    font-size: 24px;
     margin: 0;
 }
 
@@ -1493,6 +1493,13 @@ h2 {
     transform: translateX(3px)
 }
 
+@media (max-width: 1000px) {
+
+    .work-title,
+    .work-description p {
+        font-size: 16px;
+    }
+}
 
 @media (max-width: 767px) {
     .btn_works {
